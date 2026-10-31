@@ -33,7 +33,7 @@ THEME_SCHEDULE = {
     2: "Humor & Banter (Mehna-Tona / Thitholi)",
     3: "Heritage & Family Relations (Sagpan / Parampara)",
     4: "Classic Idiom (Kahawat / Muhavra)",
-    5: "Desert Life & Nature (Maru-Dhara / Prakriti)",
+    5: "Personalities & Quirky Habits (Aadmeyan Ri Fitrat)",
     6: "Wisdom & Life Sayings (Gyan Ri Baat)"
 }
 

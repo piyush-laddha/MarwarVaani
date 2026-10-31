@@ -19,7 +19,7 @@ To ensure diverse cultural topics throughout the week, MarwarVaani follows a sch
 | **Wednesday (2)** | *Humor & Banter (Mehna-Tona / Thitholi)* | Lighthearted teasing, wit, and family banter |
 | **Thursday (3)** | *Heritage & Relations (Sagpan / Parampara)* | Kinship terms, customs, and ancestral traditions |
 | **Friday (4)** | *Classic Idiom (Kahawat / Muhavra)* | Traditional proverbs, metaphors, and folklore sayings |
-| **Saturday (5)** | *Desert Life & Nature (Maru-Dhara / Prakriti)* | Thar desert ecology, climate, flora, and geography |
+| **Saturday (5)** | *Personalities & Quirky Habits (Aadmeyan Ri Fitrat)* | Character traits, individual quirks, and human nature archetypes |
 | **Sunday (6)** | *Wisdom & Life Sayings (Gyan Ri Baat)* | Philosophical reflections and timeless elder advice |
 
 ---
@@ -100,3 +100,4 @@ python MarwarVaani_Agent.py --theme "Kitchen & Food (Ransoi / Bhojan)"
 
 ## 🔒 Security Note
 Private keys (`credentials.json`) and environment secrets (`.env`) are strictly excluded via `.gitignore` and must **never** be committed to version control.
+
