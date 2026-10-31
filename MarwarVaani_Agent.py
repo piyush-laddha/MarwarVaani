@@ -28,13 +28,13 @@ GOOGLE_DOC_ID = os.getenv("GOOGLE_DOC_ID", "18P94XOufaM5sv6Wip5zAkFNAMu-VuPQ1xQy
 
 # --- WEEKLY THEMATIC SCHEDULE ---
 THEME_SCHEDULE = {
-    0: "Kitchen & Food (Ransoi / Bhojan)",
-    1: "Daily Expressive Word (Bhaav-Boli)",
-    2: "Humor & Banter (Mehna-Tona / Thitholi)",
-    3: "Heritage & Family Relations (Sagpan / Parampara)",
-    4: "Classic Idiom (Kahawat / Muhavra)",
+    0: "Kitchen, Food & Street Snacks (Ransoi, Chatkara & Mitthan)",
+    1: "Daily Expressive Words (Bhaav-Boli)",
+    2: "Humor, Jibes & Teasing (Mehna-Tona / Thitholi)",
+    3: "Customs, Rituals & Superstitions (Reet-Rivaz & Shagun)",
+    4: "Classic Idioms & Witty Sayings (Kahawat & Muhavra)",
     5: "Personalities & Quirky Habits (Aadmeyan Ri Fitrat)",
-    6: "Wisdom & Life Sayings (Gyan Ri Baat)"
+    6: "Vintage Artifacts & Sunday Wisdom (Ghar Ri Cheezan & Gyan)"
 }
 
 # --- 1. CONNECT TO GOOGLE SHEETS & FETCH LOGS ---

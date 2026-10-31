@@ -14,13 +14,13 @@ To ensure diverse cultural topics throughout the week, MarwarVaani follows a sch
 
 | Day | Theme | Description |
 | :--- | :--- | :--- |
-| **Monday (0)** | *Kitchen & Food (Ransoi / Bhojan)* | Regional culinary terms, utensils, and delicacies |
-| **Tuesday (1)** | *Daily Expressive Word (Bhaav-Boli)* | Emotion, feelings, and colloquial conversational phrases |
-| **Wednesday (2)** | *Humor & Banter (Mehna-Tona / Thitholi)* | Lighthearted teasing, wit, and family banter |
-| **Thursday (3)** | *Heritage & Relations (Sagpan / Parampara)* | Kinship terms, customs, and ancestral traditions |
-| **Friday (4)** | *Classic Idiom (Kahawat / Muhavra)* | Traditional proverbs, metaphors, and folklore sayings |
-| **Saturday (5)** | *Personalities & Quirky Habits (Aadmeyan Ri Fitrat)* | Character traits, individual quirks, and human nature archetypes |
-| **Sunday (6)** | *Wisdom & Life Sayings (Gyan Ri Baat)* | Philosophical reflections and timeless elder advice |
+| **Monday (0)** | *Kitchen, Food & Street Snacks (Ransoi, Chatkara & Mitthan)* | Regional culinary gems, savory street snacks, utensils, and sweets |
+| **Tuesday (1)** | *Daily Expressive Words (Bhaav-Boli)* | Emotion, feelings, colloquial exclamation nuances, and expressive terms |
+| **Wednesday (2)** | *Humor, Jibes & Teasing (Mehna-Tona / Thitholi)* | Lighthearted teasing, witty jibes, sarcasm, and playful family banter |
+| **Thursday (3)** | *Customs, Rituals & Superstitions (Reet-Rivaz & Shagun)* | Cultural traditions, family rituals, auspicious omens, and heritage customs |
+| **Friday (4)** | *Classic Idioms & Witty Sayings (Kahawat & Muhavra)* | Timeless Rajasthani proverbs, idioms, metaphors, and folklore sayings |
+| **Saturday (5)** | *Personalities & Quirky Habits (Aadmeyan Ri Fitrat)* | Character traits, individual quirks, and amusing human nature archetypes |
+| **Sunday (6)** | *Vintage Artifacts & Sunday Wisdom (Ghar Ri Cheezan & Gyan)* | Nostalgic household objects, heritage relics, and elder life wisdom |
 
 ---
 
