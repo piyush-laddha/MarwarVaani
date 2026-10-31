@@ -1,0 +1,21 @@
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+credentials.json
+*credentials*.json
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Python cache & artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+.DS_Store
+.idea/
+.vscode/
