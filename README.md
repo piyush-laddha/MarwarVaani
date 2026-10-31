@@ -1,6 +1,7 @@
 # 🐪 MarwarVaani (मारवाड़ वाणी)
 
-> **Preserving & Celebrating Rajasthani & Marwari Dialect across Generations**
+> **Preserving & Celebrating Rajasthani & Marwari Dialect across Generations**  
+> 🏛️ *For detailed system design, cloud data flows, and schemas, see [ARCHITECTURE.md](ARCHITECTURE.md)*
 
 **MarwarVaani** is an automated, AI-powered cultural and language education agent. It generates authentic daily micro-learning cards featuring Marwari vocabulary, idioms (*kahawats*), and colloquial expressions tailored for multi-generational family groups.
 
