@@ -23,8 +23,8 @@ load_dotenv()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 CALLMEBOT_PHONE = os.getenv("CALLMEBOT_PHONE")
 CALLMEBOT_APIKEY = os.getenv("CALLMEBOT_APIKEY")
-SHEET_NAME = os.getenv("GOOGLE_SHEET_NAME", "MarwarVaani_Agent_Log")
-GOOGLE_DOC_ID = os.getenv("GOOGLE_DOC_ID", "18P94XOufaM5sv6Wip5zAkFNAMu-VuPQ1xQydIGs1ym8")
+SHEET_NAME = os.getenv("GOOGLE_SHEET_NAME") or "MarwarVaani_Agent_Log"
+GOOGLE_DOC_ID = os.getenv("GOOGLE_DOC_ID") or "18P94XOufaM5sv6Wip5zAkFNAMu-VuPQ1xQydIGs1ym8"
 
 # --- WEEKLY THEMATIC SCHEDULE ---
 THEME_SCHEDULE = {

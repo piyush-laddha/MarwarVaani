@@ -93,8 +93,27 @@ python MarwarVaani_Agent.py --save-log
 
 ### Test a Specific Theme
 ```bash
-python MarwarVaani_Agent.py --theme "Kitchen & Food (Ransoi / Bhojan)"
+python MarwarVaani_Agent.py --theme "Kitchen, Food & Street Snacks (Ransoi, Chatkara & Mitthan)"
 ```
+
+---
+
+## ⏰ Automated Daily Pipeline (GitHub Actions)
+
+A GitHub Actions workflow is configured in `.github/workflows/daily_agent.yml` to automatically execute **every day at 7:45 AM IST** (02:15 UTC).
+
+### Required GitHub Secrets
+To allow GitHub Actions to run the agent in the cloud without exposing secrets:
+1. Go to your repository on GitHub: **Settings** $\rightarrow$ **Secrets and variables** $\rightarrow$ **Actions**.
+2. Click **New repository secret** and add:
+   * `GEMINI_API_KEY`: Your Gemini API key
+   * `GCP_CREDENTIALS_JSON`: The entire contents of your local `credentials.json` file
+   * `GOOGLE_DOC_ID`: `18P94XOufaM5sv6Wip5zAkFNAMu-VuPQ1xQydIGs1ym8`
+   * `GOOGLE_SHEET_NAME`: `MarwarVaani_Agent_Log`
+   * `CALLMEBOT_PHONE` & `CALLMEBOT_APIKEY`: *(Optional)* If using CallMeBot
+
+### Manual Trigger
+You can also manually trigger a run anytime by going to the **Actions** tab on GitHub, selecting **MarwarVaani Daily Agent**, and clicking **Run workflow**.
 
 ---
 
