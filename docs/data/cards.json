@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "मांदळियो",
+    "word_transliteration": "Mandaliyo",
+    "theme": "Vintage Artifacts & Sunday Wisdom (Ghar Ri Cheezan & Gyan)",
+    "item_type": "Word",
+    "meaning": "Traditional cylindrical amulet worn as a pendant by Rajasthani women.",
+    "cultural_vibe": "A treasured heirloom passed down generations, symbolizing heritage protection, auspiciousness, and classic Marwari craftsmanship.",
+    "dialogue_marwari": "दादी: बेटा, ई संदूक खोलर म्हारो पुराणो चाँदी रो मांदळियो काढ तो सही, आज रविवार है तो साफ-सफाई कर लूँ।",
+    "dialogue_english": "Grandmother: Son, open this chest and take out my old silver Mandaliyo, since it's Sunday I want to clean it up.",
+    "family_prompt": "Does anyone in our family still have or wear an old silver Mandaliyo or heirloom piece from our ancestral home?",
+    "date": "2026-11-01"
+  },
+  {
     "date": "2026-10-31",
     "word_devanagari": "झूठो मेह",
     "word_transliteration": "Jhootho Meh",
