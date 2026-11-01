@@ -2,8 +2,8 @@ name: MarwarVaani Daily Agent
 
 on:
   schedule:
-    # 07:45 AM IST (Indian Standard Time, UTC+5:30) = 02:15 AM UTC
-    - cron: '15 2 * * *'
+    # 07:48 AM IST (Indian Standard Time, UTC+5:30) = 02:18 AM UTC (off-peak minute)
+    - cron: '18 2 * * *'
   workflow_dispatch: # Allows manual trigger from GitHub Actions tab
 
 permissions:

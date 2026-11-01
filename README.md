@@ -103,7 +103,7 @@ python MarwarVaani_Agent.py --theme "Kitchen, Food & Street Snacks (Ransoi, Chat
 
 ## ⏰ Automated Daily Pipeline (GitHub Actions)
 
-A GitHub Actions workflow is configured in `.github/workflows/daily_agent.yml` to automatically execute **every day at 7:45 AM IST** (02:15 UTC).
+A GitHub Actions workflow is configured in `.github/workflows/daily_agent.yml` to automatically execute **every day at 7:48 AM IST** (02:18 UTC).
 
 ### Required GitHub Secrets
 To allow GitHub Actions to run the agent in the cloud without exposing secrets:
