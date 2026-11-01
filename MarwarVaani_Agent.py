@@ -26,75 +26,116 @@ CALLMEBOT_APIKEY = os.getenv("CALLMEBOT_APIKEY")
 SHEET_NAME = os.getenv("GOOGLE_SHEET_NAME") or "MarwarVaani_Agent_Log"
 GOOGLE_DOC_ID = os.getenv("GOOGLE_DOC_ID") or "18P94XOufaM5sv6Wip5zAkFNAMu-VuPQ1xQydIGs1ym8"
 
-# --- WEEKLY THEMATIC SCHEDULE ---
+# --- WEEKLY THEMATIC SCHEDULE (theme_key for Curated_Words, theme_label for display) ---
 THEME_SCHEDULE = {
-    0: "Kitchen, Food & Street Snacks (Ransoi, Chatkara & Mitthan)",
-    1: "Daily Expressive Words (Bhaav-Boli)",
-    2: "Humor, Jibes & Teasing (Mehna-Tona / Thitholi)",
-    3: "Customs, Rituals & Superstitions (Reet-Rivaz & Shagun)",
-    4: "Classic Idioms & Witty Sayings (Kahawat & Muhavra)",
-    5: "Personalities & Quirky Habits (Aadmeyan Ri Fitrat)",
-    6: "Vintage Artifacts & Sunday Wisdom (Ghar Ri Cheezan & Gyan)"
+    0: ("Kitchen & Food", "Kitchen, Food & Street Snacks (Ransoi, Chatkara & Mitthan)"),
+    1: ("Expressive Words", "Daily Expressive Words (Bhaav-Boli)"),
+    2: ("Humor & Banter", "Humor, Jibes & Teasing (Mehna-Tona / Thitholi)"),
+    3: ("Customs & Rituals", "Customs, Rituals & Superstitions (Reet-Rivaz & Shagun)"),
+    4: ("Classic Idioms", "Classic Idioms & Witty Sayings (Kahawat & Muhavra)"),
+    5: ("Personalities & Habits", "Personalities & Quirky Habits (Aadmeyan Ri Fitrat)"),
+    6: ("Vintage Artifacts", "Vintage Artifacts & Sunday Wisdom (Ghar Ri Cheezan & Gyan)")
 }
 
-# --- 1. CONNECT TO GOOGLE SHEETS & FETCH LOGS ---
-def get_recent_words(sheet_name, max_history=60):
-    """Fetches previously used words from Google Sheet (Column B) to avoid repetition."""
-    try:
-        scope = [
-            "https://spreadsheets.google.com/feeds",
-            "https://www.googleapis.com/auth/drive"
-        ]
-        
-        # Check if running in CI/CD with JSON string, otherwise load local credentials.json
-        creds_json = os.getenv("GCP_CREDENTIALS_JSON")
-        if creds_json:
-            creds_dict = json.loads(creds_json)
-            creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
-        else:
-            base_dir = os.path.dirname(os.path.abspath(__file__))
-            creds_path = os.path.join(base_dir, "credentials.json")
-            creds = ServiceAccountCredentials.from_json_keyfile_name(creds_path, scope)
+# --- 1. GOOGLE SHEETS CLIENT ---
+def get_sheets_client():
+    """Initializes and returns an authorized gspread client."""
+    scope = [
+        "https://spreadsheets.google.com/feeds",
+        "https://www.googleapis.com/auth/drive"
+    ]
+    creds_json = os.getenv("GCP_CREDENTIALS_JSON")
+    if creds_json:
+        creds_dict = json.loads(creds_json)
+        creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
+    else:
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        creds_path = os.path.join(base_dir, "credentials.json")
+        creds = ServiceAccountCredentials.from_json_keyfile_name(creds_path, scope)
+    return gspread.authorize(creds)
 
-        client = gspread.authorize(creds)
-        sheet = client.open(sheet_name).sheet1
-        records = sheet.get_all_values()
+# --- 2. FETCH FROM CURATED SEED LIST ---
+def fetch_curated_or_fallback(client, theme_key):
+    """
+    Checks the 'Curated_Words' tab for an unused word matching today's theme.
+    Returns (worksheet, row_index, word, transliteration) or (None, None, None, None)
+    if no unused curated word is available.
+    """
+    try:
+        spreadsheet = client.open(SHEET_NAME)
+        worksheet = spreadsheet.worksheet("Curated_Words")
+        rows = worksheet.get_all_values()
         
-        # Column B (index 1) stores headwords, row 1 is header ['Date', 'Word', 'Theme']
-        words = [row[1].strip() for row in records[1:] if len(row) > 1 and row[1].strip()]
-        return sheet, words[-max_history:]
+        # Row 1 is header: ['Theme', 'Word', 'Transliteration', 'Status']
+        for idx, row in enumerate(rows[1:], start=2):
+            if len(row) >= 2 and row[0].strip().lower() == theme_key.lower():
+                status = row[3].strip().upper() if len(row) >= 4 else ""
+                if status != "USED":
+                    word = row[1].strip()
+                    translit = row[2].strip() if len(row) >= 3 else ""
+                    return (worksheet, idx, word, translit)
+        return (None, None, None, None)
     except Exception as e:
-        print(f"[!] Notice: Could not access Google Sheet '{sheet_name}' ({e}). Proceeding without remote history.")
+        print(f"[!] Notice: Curated tab check skipped: {e}")
+        return (None, None, None, None)
+
+# --- 3. FETCH RECENT LOG HISTORY FOR DEDUPLICATION ---
+def get_recent_history(client, max_history=60):
+    """Fetches previously used words from Sheet1 (Column B) to prevent repeats."""
+    try:
+        spreadsheet = client.open(SHEET_NAME)
+        sheet1 = spreadsheet.sheet1
+        records = sheet1.get_all_values()
+        words = [row[1].strip() for row in records[1:] if len(row) > 1 and row[1].strip()]
+        return sheet1, words[-max_history:]
+    except Exception as e:
+        print(f"[!] Warning reading log sheet: {e}")
         return None, []
 
-# --- 2. GENERATE DAILY CARD VIA GEMINI ---
-def generate_marwarvaani_card(excluded_words, theme_name):
-    """Generates authentic Marwari card strictly aligned with today's scheduled theme."""
+# --- 4. GENERATE CARD VIA GEMINI (CURATED OR AUTONOMOUS) ---
+def generate_marwarvaani_card(theme_label, specific_word=None, specific_translit=None, excluded_words=None):
+    """
+    Generates an authentic Marwari card.
+    - If specific_word is provided: elaborates on that curated word.
+    - Otherwise: autonomously discovers an authentic word matching theme_label, avoiding excluded_words.
+    """
     client = genai.Client(api_key=GEMINI_API_KEY)
     
-    prompt = f"""
-    You are an authentic Rajasthani / Marwari cultural linguist and family educator for Project 'MarwarVaani'.
-    Today's Theme: {theme_name}
+    if specific_word:
+        prompt = f"""
+        You are an authentic Rajasthani / Marwari cultural linguist and family educator for Project 'MarwarVaani'.
+        Task: Create a daily micro-learning card for this SPECIFIC, HUMAN-CURATED Marwari term:
+        Word: {specific_word} ({specific_translit})
+        Theme: {theme_label}
 
-    Target Audience: Multi-generational family WhatsApp group (diaspora youth living outside Rajasthan, along with parents and grandparents).
+        Target Audience: Multi-generational family WhatsApp group (diaspora youth living outside Rajasthan, along with parents and grandparents).
+        Provide authentic, culturally rich, and engaging familial context.
+        """
+    else:
+        prompt = f"""
+        You are an authentic Rajasthani / Marwari cultural linguist and family educator for Project 'MarwarVaani'.
+        Theme: {theme_label}
+        Target Audience: Multi-generational family WhatsApp group (diaspora youth living outside Rajasthan, along with parents and grandparents).
 
-    CRITICAL RULES:
-    1. Do NOT repeat any of these recently covered words/idioms:
-       {', '.join(excluded_words) if excluded_words else 'None'}
-    2. The word or idiom MUST strictly match today's theme: "{theme_name}".
+        CRITICAL RULES:
+        1. Do NOT repeat any of these recently used words:
+           {', '.join(excluded_words) if excluded_words else 'None'}
+        2. The word or idiom MUST strictly match today's theme: "{theme_label}".
 
-    Select an authentic, culturally rich Marwari word, idiom (kahawat), or phrase matching today's theme.
+        Select an authentic, culturally recognized Marwari word, idiom (kahawat), or phrase from traditional lexicography.
+        """
 
+    prompt += f"""
     Output STRICT JSON matching these exact keys:
-    - "word_devanagari": Word or idiom in Devanagari script (e.g. ओळभो, लापसी, मेहणो)
-    - "word_transliteration": Clean Latin phonetic spelling (e.g. Olbho, Laapsi, Mehno)
-    - "theme": Clean, short theme label (e.g. "{theme_name}")
+    - "word_devanagari": Word or idiom in Devanagari script
+    - "word_transliteration": Clean Latin phonetic spelling (clean, without notes)
+    - "theme": Clean short theme title (e.g. "{theme_label}")
     - "item_type": "Word", "Idiom", or "Phrase"
     - "meaning": Crisp English meaning (under 15 words)
-    - "cultural_vibe": 1-2 lines explaining the cultural sentiment, regional nuance, or origin
+    - "cultural_vibe": 1-2 lines explaining the cultural sentiment, regional lore, or origin
     - "dialogue_marwari": A realistic home dialogue spoken by elders/family
     - "dialogue_english": Natural English translation of the dialogue
-    - "family_prompt": A fun, engaging question to prompt replies in the family chat
+    - "family_prompt": A fun, engaging question to prompt replies in the chat
     """
 
     models_to_try = ["gemini-3.5-flash-lite", "gemini-3.8-flash"]
@@ -114,7 +155,7 @@ def generate_marwarvaani_card(excluded_words, theme_name):
             continue
     raise last_err
 
-# --- 3. FORMAT FOR WHATSAPP / GOOGLE DOC ---
+# --- 5. FORMAT FOR WHATSAPP ---
 def format_whatsapp_message(data):
     """Formats output using standard WhatsApp Markdown (asterisks for bold, underscores for italic)."""
     theme = data.get("theme", "")
@@ -135,7 +176,7 @@ def format_whatsapp_message(data):
         f"✨ _Keep our roots alive with MarwarVaani_"
     )
 
-# --- 4. APPEND TO GOOGLE DOC ---
+# --- 6. APPEND TO GOOGLE DOC JOURNAL ---
 def append_to_google_doc(doc_id, message_text):
     """
     Appends the formatted card to the bottom of the Google Doc with its date.
@@ -161,7 +202,6 @@ def append_to_google_doc(doc_id, message_text):
         res = requests.get(export_url, headers=headers, timeout=20)
         if res.status_code == 200:
             raw_text = res.content.decode("utf-8-sig", errors="replace").strip()
-            # Filter out any initial placeholder if present
             if raw_text and not raw_text.startswith("Test Message from MarwarVaani Agent"):
                 existing_text = raw_text
 
@@ -198,7 +238,7 @@ def append_to_google_doc(doc_id, message_text):
         print(f"[-] Error appending to Google Doc: {e}")
         return False
 
-# --- 5. SAVE TO WEB ARCHIVE (GitHub Pages) ---
+# --- 7. SAVE TO WEB ARCHIVE (GitHub Pages) ---
 def save_to_web_archive(card_data):
     """Saves the generated card into docs/data/cards.json for the GitHub Pages web dictionary."""
     try:
@@ -219,7 +259,6 @@ def save_to_web_archive(card_data):
         card_copy = dict(card_data)
         card_copy["date"] = today_str
 
-        # Check if already present to prevent duplicate JSON entries
         exists = any(
             c.get("word_devanagari") == card_copy.get("word_devanagari") 
             and c.get("date") == today_str 
@@ -237,7 +276,7 @@ def save_to_web_archive(card_data):
         print(f"[!] Warning: Could not update Web Archive: {e}")
         return False
 
-# --- 6. SEND VIA CALLMEBOT ---
+# --- 8. SEND VIA CALLMEBOT ---
 def send_whatsapp_alert(phone, message_text, apikey):
     """Sends preview to personal WhatsApp via CallMeBot."""
     if not phone or not apikey:
@@ -259,13 +298,13 @@ def send_whatsapp_alert(phone, message_text, apikey):
         print(f"[-] Dispatch error: {e}")
         return False
 
-# --- 6. LOG ENTRY TO SHEETS (Columns: Date, Word, Theme) ---
+# --- 9. LOG ENTRY TO SHEET1 ---
 def log_entry(sheet, word, theme):
     """Appends Date (Col A), Word (Col B), and Theme (Col C) to Google Sheet."""
     if sheet:
         today_str = datetime.date.today().strftime("%Y-%m-%d")
         sheet.append_row([today_str, word, theme])
-        print(f"[+] Saved '{word}' | Theme: '{theme}' across columns A, B, C in {SHEET_NAME}.")
+        print(f"[+] Saved '{word}' | Theme: '{theme}' across columns A, B, C in {SHEET_NAME} (Sheet1).")
 
 # --- MAIN EXECUTION ---
 def main():
@@ -281,12 +320,21 @@ def main():
 
     # Determine theme based on current weekday
     weekday = datetime.date.today().weekday()
-    current_theme = THEME_SCHEDULE.get(weekday, "Daily Expressive Word (Bhaav-Boli)")
+    theme_key, theme_label = THEME_SCHEDULE.get(
+        weekday, 
+        ("Expressive Words", "Daily Expressive Words (Bhaav-Boli)")
+    )
 
     # Allow overriding theme for manual testing: e.g. python MarwarVaani_Agent.py --theme "Kitchen & Food"
     for idx, arg in enumerate(sys.argv):
         if arg == "--theme" and idx + 1 < len(sys.argv):
-            current_theme = sys.argv[idx + 1]
+            override = sys.argv[idx + 1]
+            for k, (tk, tl) in THEME_SCHEDULE.items():
+                if override.lower() in tk.lower() or override.lower() in tl.lower():
+                    theme_key, theme_label = tk, tl
+                    break
+            else:
+                theme_key, theme_label = override, override
 
     print("====================================")
     print("      PROJECT MARWARVAANI AGENT     ")
@@ -295,56 +343,78 @@ def main():
     print("====================================\n")
     
     print(f"[*] Today's Day: {datetime.date.today().strftime('%A')} (Weekday {weekday})")
-    print(f"[*] Today's Theme: {current_theme}\n")
+    print(f"[*] Today's Theme: {theme_label} [Seed Key: {theme_key}]\n")
 
     if dry_run and not has_callmebot:
         print("[*] Notice: CallMeBot credentials not configured. WhatsApp dispatch skipped.\n")
     elif dry_run:
         print("[*] Notice: Dry Run flag detected. WhatsApp dispatch skipped.\n")
 
-    print("[1/5] Checking history in Google Sheets...")
-    sheet, recent_history = get_recent_words(SHEET_NAME)
-    print(f"[*] Live Google Sheet '{SHEET_NAME}' connected. Found {len(recent_history)} previously logged words.")
+    # 1. Connect to Google Sheets & check Curated list vs History
+    print("[1/6] Checking Google Sheets...")
+    client = get_sheets_client()
     
-    print(f"\n[2/5] Generating MarwarVaani card via Gemini for theme '{current_theme}'...")
-    card_data = generate_marwarvaani_card(recent_history, current_theme)
-    
+    curated_ws, row_idx, picked_word, picked_translit = fetch_curated_or_fallback(client, theme_key)
+    log_sheet, recent_history = get_recent_history(client)
+    print(f"[*] History log (Sheet1) contains {len(recent_history)} previously used entries.")
+
+    # 2. Generate Card (Curated first, Autonomous fallback)
+    if picked_word:
+        print(f"\n[2/6] Found curated term in 'Curated_Words' seed list (Row {row_idx}):")
+        print(f"      👉 {picked_word} ({picked_translit})")
+        print(f"      Generating rich card via Gemini for '{theme_label}'...")
+        card_data = generate_marwarvaani_card(theme_label, specific_word=picked_word, specific_translit=picked_translit)
+    else:
+        print(f"\n[2/6] No unused curated words in 'Curated_Words' for theme '{theme_key}'.")
+        print("      Switching to autonomous Gemini generation with deduplication...")
+        card_data = generate_marwarvaani_card(theme_label, excluded_words=recent_history)
+
+    # 3. Format Card Preview
     formatted_msg = format_whatsapp_message(card_data)
     print("\n" + "=" * 20 + " CARD PREVIEW " + "=" * 20)
     print(formatted_msg)
     print("=" * 54 + "\n")
-    
-    # 3. Append to Google Doc
-    print("[3/5] Appending to Google Doc 'MarwarVaani_Msg'...")
+
+    # 4. Append to Google Doc Journal
+    print("[3/6] Appending to Google Doc 'MarwarVaani_Msg'...")
     if GOOGLE_DOC_ID:
         append_to_google_doc(GOOGLE_DOC_ID, formatted_msg)
     else:
         print("[!] GOOGLE_DOC_ID not configured in .env.")
 
-    # 4. WhatsApp Dispatch
-    print("\n[4/5] WhatsApp Dispatch:")
+    # 5. WhatsApp Dispatch
+    print("\n[4/6] WhatsApp Dispatch:")
     if dry_run:
         print("[*] WhatsApp dispatch skipped (CallMeBot not configured / dry run active).")
     else:
         send_whatsapp_alert(CALLMEBOT_PHONE, formatted_msg, CALLMEBOT_APIKEY)
-    
-    # 5. Save to Web Archive (docs/data/cards.json)
+
+    # 6. Save to Web Archive (docs/data/cards.json)
     print("\n[5/6] Updating Web Archive (docs/data/cards.json)...")
     if dry_run and "--save-log" not in sys.argv:
         print("[*] DRY RUN: Web Archive update skipped (pass --save-log to update).")
     else:
         save_to_web_archive(card_data)
 
-    # 6. Google Sheets Logging
-    print("\n[6/6] Google Sheets Logging (Columns: Date, Word, Theme):")
+    # 7. Update Google Sheets (Log in Sheet1 & Mark USED in Curated_Words)
+    print("\n[6/6] Updating Google Sheets:")
     if dry_run and "--save-log" not in sys.argv:
-        print("[*] DRY RUN: Google Sheet logging skipped (keeps production history clean).")
-        print("    (Pass --save-log if you want to write to Google Sheets during dry run)")
+        print("[*] DRY RUN: Google Sheet updates skipped (keeps seed list and history clean).")
+        print("    (Pass --save-log if you want to update Google Sheets during dry run)")
     else:
+        # A. Log in Sheet1
         word_entry = card_data.get("word_devanagari", "")
-        theme_entry = card_data.get("theme", current_theme)
-        log_entry(sheet, word_entry, theme_entry)
-    
+        theme_entry = card_data.get("theme", theme_label)
+        log_entry(log_sheet, word_entry, theme_entry)
+
+        # B. Mark as USED in Curated_Words tab
+        if curated_ws and row_idx:
+            try:
+                curated_ws.update_cell(row_idx, 4, "USED")
+                print(f"[+] Marked row {row_idx} ('{picked_word}') as 'USED' in Curated_Words tab.")
+            except Exception as e:
+                print(f"[!] Warning: Could not mark row {row_idx} as USED: {e}")
+
     print("\nRun complete.")
 
 if __name__ == "__main__":

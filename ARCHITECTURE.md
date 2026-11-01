@@ -72,13 +72,17 @@ flowchart TD
   * **Event Trigger:** `workflow_dispatch` allows immediate on-demand testing directly from the GitHub Actions console.
 * **Secret Injection:** Zero credentials stored on disk. At startup, GitHub Actions securely injects `GEMINI_API_KEY`, `GCP_CREDENTIALS_JSON`, `GOOGLE_DOC_ID`, and `GOOGLE_SHEET_NAME` into process memory.
 
-### B. State & Deduplication Layer (Google Sheets API)
-* **Purpose:** Acts as a lightweight, human-auditable database.
-* **Mechanism:**
-  1. Authenticates using a Google Cloud Service Account (`credentials.json` or `GCP_CREDENTIALS_JSON`).
-  2. Reads Column B (`Word`) across the last 60 records.
-  3. Feeds these words into Gemini's exclusion list, preventing repeating terms over a 2-month window.
-  4. Post-generation, appends `[Date, Word, Theme]` across Columns A, B, and C.
+### B. State, Curation & Deduplication Layer (Google Sheets API)
+* **Purpose:** Acts as a lightweight, human-in-the-loop content queue and database.
+* **Dual-Tab Architecture:**
+  1. **Tab 1: `Curated_Words` (Primary Seed List):**
+     * Columns: `Theme`, `Word`, `Transliteration`, `Status`.
+     * The agent checks this tab first for an unused word (`Status != "USED"`) matching today's theme key.
+     * When selected, the word is fed to Gemini to generate context, dialogues, and prompts, and the row is marked as `USED` in Column D upon publication.
+  2. **Tab 2: `Sheet1` (Execution Log & Deduplication Archive):**
+     * Columns: `Date`, `Word`, `Theme`.
+     * Tracks every published word.
+     * When the `Curated_Words` list for a theme is exhausted, the agent automatically falls back to autonomous Gemini generation, using the last 60 entries in `Sheet1` as an anti-repetition exclusion list.
 
 ### C. Cognitive Generation Layer (Google Gemini 3.5 / 3.8 Flash)
 * **Engine:** Google GenAI SDK (`google-genai`).

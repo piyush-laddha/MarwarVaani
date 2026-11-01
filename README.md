@@ -27,8 +27,9 @@ To ensure diverse cultural topics throughout the week, MarwarVaani follows a sch
 
 ## 🚀 Key Features
 
+* **Two-Tier Content Engine (Curated Seeds + Autonomous AI):** Checks the family-verified `Curated_Words` tab first and marks words as `USED`. When the curated list for a theme is exhausted, it seamlessly falls back to autonomous Gemini generation.
 * **AI Generation with Gemini 3.5 / 3.8 Flash:** Produces culturally authentic Marwari phrasing and structured JSON.
-* **Smart Deduplication:** Connects to Google Sheets to maintain a rolling history and prevent repeating recently used terms.
+* **Smart Deduplication:** Connects to Google Sheets (`Sheet1`) to maintain a rolling history and prevent repeating recently used terms.
 * **Multi-Column Logging:** Automatically logs `Date`, `Word`, and `Theme` across Columns A, B, and C in Google Sheets.
 * **Google Docs Journal:** Chronologically appends daily cards into a live Google Doc for easy viewing and copy-pasting.
 * **Searchable Web Dictionary (GitHub Pages):** Interactive, responsive living web dictionary with audio pronunciation, theme/type filters, and instant WhatsApp copy.
