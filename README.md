@@ -31,6 +31,7 @@ To ensure diverse cultural topics throughout the week, MarwarVaani follows a sch
 * **Smart Deduplication:** Connects to Google Sheets to maintain a rolling history and prevent repeating recently used terms.
 * **Multi-Column Logging:** Automatically logs `Date`, `Word`, and `Theme` across Columns A, B, and C in Google Sheets.
 * **Google Docs Journal:** Chronologically appends daily cards into a live Google Doc for easy viewing and copy-pasting.
+* **Searchable Web Dictionary (GitHub Pages):** Interactive, responsive living web dictionary with audio pronunciation, theme/type filters, and instant WhatsApp copy.
 * **WhatsApp Ready:** Message output is pre-formatted in WhatsApp markdown (`*bold*`, `_italics_`) with emojis.
 * **Dry Run Support:** Run tests without dispatching alerts or polluting production sheet history.
 
@@ -115,6 +116,23 @@ To allow GitHub Actions to run the agent in the cloud without exposing secrets:
 
 ### Manual Trigger
 You can also manually trigger a run anytime by going to the **Actions** tab on GitHub, selecting **MarwarVaani Daily Agent**, and clicking **Run workflow**.
+
+---
+
+## 🌐 Live Web Dictionary (GitHub Pages)
+
+The project includes a living, searchable web archive located in the `/docs` folder.
+
+### Enabling GitHub Pages (One-Time Setup):
+1. Go to your repository on GitHub: **Settings** $\rightarrow$ **Pages** (under "Code and automation").
+2. Under **Build and deployment** $\rightarrow$ **Branch**:
+   * Select branch: **`main`**
+   * Select folder: **`/docs`**
+3. Click **Save**.
+4. In about 1 minute, your site will be live at:
+   👉 **`https://piyush-laddha.github.io/MarwarVaani/`**
+
+Every morning at 7:45 AM, the automated GitHub Actions pipeline automatically updates `docs/data/cards.json` and pushes the commit, updating your website seamlessly without any manual builds!
 
 ---
 

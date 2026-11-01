@@ -1,0 +1,62 @@
+[
+  {
+    "date": "2026-10-31",
+    "word_devanagari": "झूठो मेह",
+    "word_transliteration": "Jhootho Meh",
+    "theme": "Desert Life & Nature (Maru-Dhara / Prakriti)",
+    "item_type": "Phrase",
+    "meaning": "A false cloud or mirage of rain that disappears without showering.",
+    "cultural_vibe": "Captures the hopeful yet testing relationship Marwaris have with fickle desert monsoon clouds.",
+    "dialogue_marwari": "आज तो आकाश में घणी बदळियां छाई है, पण इण मूळ धूप में तौ लागे 'झूठो मेह' ही निकळसी।",
+    "dialogue_english": "Today the sky is full of clouds, but in this scorching heat, it feels like it's just a false rain cloud.",
+    "family_prompt": "Have you ever experienced a desert mirage or a false rain cloud during your visits to Rajasthan?"
+  },
+  {
+    "date": "2026-10-31",
+    "word_devanagari": "झिझवा",
+    "word_transliteration": "Jhijhvaa",
+    "theme": "Personalities & Quirky Habits (Aadmeyan Ri Fitrat)",
+    "item_type": "Word",
+    "meaning": "A cool, refreshing breeze that blows during the desert evening.",
+    "cultural_vibe": "Captures the sudden relief and joy brought by the gentle evening wind after a scorching Thar summer day.",
+    "dialogue_marwari": "अरे छोरा, बारै ओसरे जाइजे, कत्तौ सारौ झिझवा चल रयौ है!",
+    "dialogue_english": "Hey child, go out to the verandah, such a lovely evening breeze is blowing!",
+    "family_prompt": "Do you remember the cool desert breeze during your summer visits to Rajasthan?"
+  },
+  {
+    "date": "2026-10-31",
+    "word_devanagari": "लू री लपेट",
+    "word_transliteration": "Loo ri lapet",
+    "theme": "Desert Life & Nature (Maru-Dhara / Prakriti)",
+    "item_type": "Phrase",
+    "meaning": "The scorching heat wave unique to the Thar Desert.",
+    "cultural_vibe": "Captures the intense summer winds of Marwar that teach resilience and the art of staying indoors during peak afternoons.",
+    "dialogue_marwari": "अरे छोरा, बळती दुपहरी बा'र मत जाइज्यो, कठेई 'लू री लपेट' में कोनी आ जाव।",
+    "dialogue_english": "Hey child, don't go outside in the blazing afternoon, lest you get caught in the hot desert wind.",
+    "family_prompt": "What is the highest temperature you have ever experienced, and how do you beat the heat like a true Marwari?"
+  },
+  {
+    "date": "2026-10-31",
+    "word_devanagari": "धोरां रा धणी",
+    "word_transliteration": "Dhoran ra Dhani",
+    "theme": "Desert Life & Nature (Maru-Dhara / Prakriti)",
+    "item_type": "Phrase",
+    "meaning": "Masters of the sand dunes, referring to the majestic camel.",
+    "cultural_vibe": "An affectionate and respectful ode to the camel, the indispensable lifeline of the Thar Desert.",
+    "dialogue_marwari": "दादूजी: देख बेटा, धोरां रा धणी बिना मरुधरे री जीवनशैली अधूरी है।",
+    "dialogue_english": "Grandfather: Look son, without the masters of the dunes, life in our desert land is incomplete.",
+    "family_prompt": "Have you ever seen a camel in person during your visits to Rajasthan? Share your best memory!"
+  },
+  {
+    "date": "2026-10-31",
+    "word_devanagari": "ओळभो",
+    "word_transliteration": "Olbho",
+    "theme": "Daily Expressive Words (Bhaav-Boli)",
+    "item_type": "Word",
+    "meaning": "A gentle, affectionate complaint or reminder of emotional grievance.",
+    "cultural_vibe": "Olbho is uniquely Marwari—not quite a complaint, but a soft emotional nudge used by elders when you haven't called or visited in a while, wrapped in deep love.",
+    "dialogue_marwari": "दादी: 'बेटे, घणादिना सूं फोन कोनी आयो, बसम् थारो ओळभो ही रेई ग्यो।'",
+    "dialogue_english": "Grandmother: 'Son, you haven't called in days, now all I am left with is your gentle complaint.'",
+    "family_prompt": "Who in the family gives you the sweetest 'olbho' when you forget to call? Tag them below!"
+  }
+]

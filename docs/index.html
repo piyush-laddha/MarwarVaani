@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MarwarVaani (मारवाड़ वाणी) | Daily Marwari Cultural Dictionary & Web Archive</title>
+  <meta name="description" content="A searchable living web dictionary and archive for authentic Rajasthani / Marwari dialect, idioms, proverbs, and family dialogues.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Rozha+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header / Hero Section -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="logo-badge">
+        <span class="camel-icon">🐪</span>
+        <span class="sub-label">Project MarwarVaani</span>
+      </div>
+      <h1 class="hero-title">मारवाड़ वाणी <span class="title-en">MarwarVaani</span></h1>
+      <p class="hero-tagline">Preserving & celebrating our authentic Marwari dialect, culture, and familial banter across generations.</p>
+      
+      <div class="hero-links">
+        <a href="https://github.com/piyush-laddha/MarwarVaani" target="_blank" rel="noopener" class="hero-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Repository
+        </a>
+        <a href="https://docs.google.com/document/d/18P94XOufaM5sv6Wip5zAkFNAMu-VuPQ1xQydIGs1ym8/edit" target="_blank" rel="noopener" class="hero-btn doc-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+          Google Doc Journal
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="container">
+    <!-- Search & Filter Controls -->
+    <section class="controls-card">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search words, English transliteration, meanings, or dialogues..." autocomplete="off">
+        <button id="clearSearchBtn" class="clear-btn" aria-label="Clear search" title="Clear">✕</button>
+      </div>
+
+      <div class="filters-row">
+        <!-- Theme Filter -->
+        <div class="filter-group">
+          <label for="themeSelect">Theme:</label>
+          <select id="themeSelect">
+            <option value="ALL">All Themes (7 Days)</option>
+            <option value="Kitchen, Food & Street Snacks (Ransoi, Chatkara & Mitthan)">Monday: Kitchen, Food & Street Snacks</option>
+            <option value="Daily Expressive Words (Bhaav-Boli)">Tuesday: Daily Expressive Words</option>
+            <option value="Humor, Jibes & Teasing (Mehna-Tona / Thitholi)">Wednesday: Humor, Jibes & Teasing</option>
+            <option value="Customs, Rituals & Superstitions (Reet-Rivaz & Shagun)">Thursday: Customs, Rituals & Superstitions</option>
+            <option value="Classic Idioms & Witty Sayings (Kahawat & Muhavra)">Friday: Classic Idioms & Witty Sayings</option>
+            <option value="Personalities & Quirky Habits (Aadmeyan Ri Fitrat)">Saturday: Personalities & Quirky Habits</option>
+            <option value="Vintage Artifacts & Sunday Wisdom (Ghar Ri Cheezan & Gyan)">Sunday: Vintage Artifacts & Sunday Wisdom</option>
+          </select>
+        </div>
+
+        <!-- Type Filter -->
+        <div class="filter-group">
+          <label for="typeSelect">Type:</label>
+          <select id="typeSelect">
+            <option value="ALL">All Types</option>
+            <option value="Word">Word</option>
+            <option value="Idiom">Idiom (Kahawat)</option>
+            <option value="Phrase">Phrase</option>
+          </select>
+        </div>
+
+        <!-- Sort Filter -->
+        <div class="filter-group">
+          <label for="sortSelect">Sort:</label>
+          <select id="sortSelect">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="alpha">Alphabetical (A-Z)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Stats Bar -->
+      <div class="stats-bar">
+        <span id="resultsCount">Loading MarwarVaani archive...</span>
+        <button id="resetFiltersBtn" class="reset-btn">Reset Filters</button>
+      </div>
+    </section>
+
+    <!-- Cards Grid -->
+    <section id="cardsGrid" class="cards-grid">
+      <!-- Cards rendered dynamically via app.js -->
+    </section>
+
+    <!-- Empty State -->
+    <div id="emptyState" class="empty-state" style="display: none;">
+      <div class="empty-icon">🏜️</div>
+      <h3>कौनी मिल्यो (No Matches Found)</h3>
+      <p>No Marwari words or idioms matched your search. Try a different keyword or reset filters.</p>
+    </div>
+  </main>
+
+  <!-- Toast Notification for Copy -->
+  <div id="toast" class="toast" role="alert" aria-live="polite">Copied to clipboard! 📋</div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>🐪 <strong>MarwarVaani</strong> | Made with ❤️ for Rajasthani cultural heritage preservation.</p>
+    <p class="footer-sub">Autonomous AI micro-service powered by Google Gemini & GitHub Actions. Run daily at 7:45 AM IST.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

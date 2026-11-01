@@ -179,17 +179,13 @@ THEME_SCHEDULE = {
 
 ```mermaid
 flowchart LR
-    Current[Current Pipeline<br/>Gemini + Docs + Sheets]
+    Current[Core Pipeline<br/>Gemini + Docs + Sheets] --> Web[Implemented:<br/>Living Web Archive<br/>GitHub Pages /docs]
     
-    TTS[Voice Synthesis<br/>Audio Marwari via Gemini Live / TTS]
-    WA[WhatsApp Group Bot<br/>Direct Dispatch via Green API]
-    Web[Static Web Archive<br/>GitHub Pages / Astro Blog]
-
-    Current -.-> TTS
-    Current -.-> WA
-    Current -.-> Web
+    Current -.-> TTS[Future:<br/>Native MP3 TTS Synthesis]
+    Current -.-> WA[Future:<br/>Direct WhatsApp Bot]
 ```
 
-1. **Audio Pronunciation:** Integrate Text-to-Speech (TTS) to generate daily `.mp3` audio snippets so younger diaspora children can hear authentic Marwari accent and cadence.
-2. **Direct WhatsApp Group Dispatch:** Transition from Google Doc staging to automated WhatsApp group broadcasting via Green API / Meta Cloud API.
-3. **Web Archive (GitHub Pages):** Render past daily entries into a searchable public web dictionary for community learning.
+1. **Web Archive & Dictionary [IMPLEMENTED]:** Serves a responsive, searchable dictionary from `/docs` via GitHub Pages with auto-sync from `docs/data/cards.json` on every run.
+2. **Audio Voice Synthesis [FUTURE]:** Generate native `.mp3` audio pronunciations and host them alongside cards.
+3. **Direct WhatsApp Group Dispatch [FUTURE]:** Transition from Google Doc staging to automated WhatsApp group broadcasting via Green API / Meta Cloud API.
+

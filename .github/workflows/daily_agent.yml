@@ -6,6 +6,9 @@ on:
     - cron: '15 2 * * *'
   workflow_dispatch: # Allows manual trigger from GitHub Actions tab
 
+permissions:
+  contents: write
+
 jobs:
   run-daily-agent:
     name: Generate & Publish Daily Marwari Card
@@ -36,3 +39,15 @@ jobs:
           CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
         run: |
           python MarwarVaani_Agent.py --save-log
+
+      - name: Commit & Push Web Archive Updates
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data/cards.json
+          if git diff --staged --quiet; then
+            echo "No new cards to commit to web archive."
+          else
+            git commit -m "Auto-archive daily card for $(date +'%Y-%m-%d') [skip ci]"
+            git push
+          fi

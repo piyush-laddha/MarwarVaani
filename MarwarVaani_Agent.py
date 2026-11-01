@@ -198,7 +198,46 @@ def append_to_google_doc(doc_id, message_text):
         print(f"[-] Error appending to Google Doc: {e}")
         return False
 
-# --- 5. SEND VIA CALLMEBOT ---
+# --- 5. SAVE TO WEB ARCHIVE (GitHub Pages) ---
+def save_to_web_archive(card_data):
+    """Saves the generated card into docs/data/cards.json for the GitHub Pages web dictionary."""
+    try:
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        data_dir = os.path.join(base_dir, "docs", "data")
+        os.makedirs(data_dir, exist_ok=True)
+        cards_file = os.path.join(data_dir, "cards.json")
+        
+        cards = []
+        if os.path.exists(cards_file):
+            try:
+                with open(cards_file, "r", encoding="utf-8") as f:
+                    cards = json.load(f)
+            except Exception:
+                cards = []
+
+        today_str = datetime.date.today().strftime("%Y-%m-%d")
+        card_copy = dict(card_data)
+        card_copy["date"] = today_str
+
+        # Check if already present to prevent duplicate JSON entries
+        exists = any(
+            c.get("word_devanagari") == card_copy.get("word_devanagari") 
+            and c.get("date") == today_str 
+            for c in cards
+        )
+        if not exists:
+            cards.insert(0, card_copy)  # Newest first
+            with open(cards_file, "w", encoding="utf-8") as f:
+                json.dump(cards, f, ensure_ascii=False, indent=2)
+            print(f"[+] Saved '{card_copy.get('word_devanagari')}' to Web Archive (docs/data/cards.json).")
+        else:
+            print(f"[*] Card '{card_copy.get('word_devanagari')}' already exists in Web Archive.")
+        return True
+    except Exception as e:
+        print(f"[!] Warning: Could not update Web Archive: {e}")
+        return False
+
+# --- 6. SEND VIA CALLMEBOT ---
 def send_whatsapp_alert(phone, message_text, apikey):
     """Sends preview to personal WhatsApp via CallMeBot."""
     if not phone or not apikey:
@@ -289,8 +328,15 @@ def main():
     else:
         send_whatsapp_alert(CALLMEBOT_PHONE, formatted_msg, CALLMEBOT_APIKEY)
     
-    # 5. Google Sheets Logging
-    print("\n[5/5] Google Sheets Logging (Columns: Date, Word, Theme):")
+    # 5. Save to Web Archive (docs/data/cards.json)
+    print("\n[5/6] Updating Web Archive (docs/data/cards.json)...")
+    if dry_run and "--save-log" not in sys.argv:
+        print("[*] DRY RUN: Web Archive update skipped (pass --save-log to update).")
+    else:
+        save_to_web_archive(card_data)
+
+    # 6. Google Sheets Logging
+    print("\n[6/6] Google Sheets Logging (Columns: Date, Word, Theme):")
     if dry_run and "--save-log" not in sys.argv:
         print("[*] DRY RUN: Google Sheet logging skipped (keeps production history clean).")
         print("    (Pass --save-log if you want to write to Google Sheets during dry run)")
