@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "लापसी",
+    "word_transliteration": "Laapsi",
+    "theme": "Kitchen, Food & Street Snacks (Ransoi, Chatkara & Mitthan)",
+    "item_type": "Word",
+    "meaning": "Traditional sweet broken-wheat dessert cooked with ghee, jaggery, and dry fruits.",
+    "cultural_vibe": "The ultimate symbol of auspicious beginnings and celebrations in Marwari homes, served during festivals and family milestones.",
+    "dialogue_marwari": "बेटा, आज शुभ काम है, रसोई में गरमा-गरम लापसी और सीरा बना लीज्यो!",
+    "dialogue_english": "Son, today is an auspicious occasion, do prepare hot laapsi and sheera in the kitchen!",
+    "family_prompt": "Who in our family makes the best, most ghee-dripping Laapsi? Share your memories!",
+    "date": "2026-11-02"
+  },
+  {
     "word_devanagari": "सोगरो",
     "word_transliteration": "Sogro",
     "theme": "Kitchen, Food & Street Snacks (Ransoi, Chatkara & Mitthan)",
