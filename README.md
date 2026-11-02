@@ -103,7 +103,7 @@ python MarwarVaani_Agent.py --theme "Kitchen, Food & Street Snacks (Ransoi, Chat
 
 ## ⏰ Automated Daily Pipeline (GitHub Actions)
 
-A GitHub Actions workflow is configured in `.github/workflows/daily_agent.yml` to automatically execute **every day at 7:48 AM IST** (02:18 UTC).
+A GitHub Actions workflow is configured in `.github/workflows/daily_agent.yml` to automatically execute **every day at 5:55 AM IST** (00:25 UTC).
 
 ### Required GitHub Secrets
 To allow GitHub Actions to run the agent in the cloud without exposing secrets:
@@ -133,7 +133,7 @@ The project includes a living, searchable web archive located in the `/docs` fol
 4. In about 1 minute, your site will be live at:
    👉 **`https://piyush-laddha.github.io/MarwarVaani/`**
 
-Every morning at 7:45 AM, the automated GitHub Actions pipeline automatically updates `docs/data/cards.json` and pushes the commit, updating your website seamlessly without any manual builds!
+Every morning at 5:55 AM, the automated GitHub Actions pipeline automatically updates `docs/data/cards.json` and pushes the commit, updating your website seamlessly without any manual builds!
 
 ---
 

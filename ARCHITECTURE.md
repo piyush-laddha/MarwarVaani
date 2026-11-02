@@ -20,7 +20,7 @@ The following diagram illustrates the end-to-end cloud infrastructure and data f
 ```mermaid
 flowchart TD
     subgraph Trigger["1. Trigger & Scheduling"]
-        Cron["GitHub Actions Cron<br/>(07:45 AM IST / 02:15 UTC)"]
+        Cron["GitHub Actions Cron<br/>(05:55 AM IST / 00:25 UTC)"]
         Manual["Manual Workflow Dispatch<br/>(GitHub UI)"]
     end
 
@@ -68,7 +68,7 @@ flowchart TD
 ### A. Orchestration Layer (GitHub Actions)
 * **Runner:** Ephemeral Linux Virtual Machine (`ubuntu-latest`).
 * **Trigger Mechanism:**
-  * **Cron Trigger:** `15 2 * * *` (02:15 AM UTC = 07:45 AM Indian Standard Time).
+  * **Cron Trigger:** `25 0 * * *` (00:25 AM UTC = 05:55 AM Indian Standard Time).
   * **Event Trigger:** `workflow_dispatch` allows immediate on-demand testing directly from the GitHub Actions console.
 * **Secret Injection:** Zero credentials stored on disk. At startup, GitHub Actions securely injects `GEMINI_API_KEY`, `GCP_CREDENTIALS_JSON`, `GOOGLE_DOC_ID`, and `GOOGLE_SHEET_NAME` into process memory.
 
@@ -105,7 +105,7 @@ flowchart TD
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Scheduler as GitHub Actions (7:45 AM)
+    actor Scheduler as GitHub Actions (5:55 AM)
     participant Runner as Python Agent Runtime
     participant Sheets as Google Sheets (State)
     participant Gemini as Gemini AI API
