@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "सोगरो",
+    "word_transliteration": "Sogro",
+    "theme": "Kitchen, Food & Street Snacks (Ransoi, Chatkara & Mitthan)",
+    "item_type": "Word",
+    "meaning": "Thick, crisp pearl millet (bajra) flatbread served generously with white butter.",
+    "cultural_vibe": "The undisputed king of Marwari winter tables, traditionally paired with lasun ki chutney and fresh white butter to keep the desert chill at bay.",
+    "dialogue_marwari": "अरे छोरा, बाजरे को गरम सोगरो ल्याऊं के ऊपर देसी घी चूपड़'र?",
+    "dialogue_english": "Hey son, shall I bring a hot bajra sogro drenched in homemade ghee?",
+    "family_prompt": "Who in our family makes the crispiest sogro, and do you prefer it with gur (jaggery) or lehsun ki chutney?",
+    "date": "2026-11-02"
+  },
+  {
     "word_devanagari": "मांदळियो",
     "word_transliteration": "Mandaliyo",
     "theme": "Vintage Artifacts & Sunday Wisdom (Ghar Ri Cheezan & Gyan)",
