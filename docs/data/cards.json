@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "ओळभो",
+    "word_transliteration": "Olbho",
+    "theme": "Daily Expressive Words (Bhaav-Boli)",
+    "item_type": "Word",
+    "meaning": "A sweet, reproachful complaint for not visiting or calling.",
+    "cultural_vibe": "Rooted in Marwari hospitality, 'Olbho' captures the gentle grievance of elders missing their loved ones.",
+    "dialogue_marwari": "अरे बन्ना! दो महिना होइग्या, थाने कदै याद ई कोनी आई? थारो ओळभो करणो पड़सी अब तो!",
+    "dialogue_english": "Hey dear! It's been two months, didn't you even remember us? Now we must lodge a sweet complaint (olbho) against you!",
+    "family_prompt": "Who in the family do you owe an 'olbho' to for not calling this week? Tag them below!",
+    "date": "2026-11-03"
+  },
+  {
     "word_devanagari": "लापसी",
     "word_transliteration": "Laapsi",
     "theme": "Kitchen, Food & Street Snacks (Ransoi, Chatkara & Mitthan)",
