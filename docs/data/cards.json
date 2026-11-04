@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "मेहणो",
+    "word_transliteration": "Mehno",
+    "theme": "Humor, Jibes & Teasing (Mehna-Tona / Thitholi)",
+    "item_type": "Word",
+    "meaning": "A sharp sarcastic jibe or taunt often used playfully by elders.",
+    "cultural_vibe": "In Marwari households, a 'mehno' is an art form—half complaint, half affection. It's how elders lovingly keep the young ones in check with a smile.",
+    "dialogue_marwari": "अरे छोरा! इत्ता दिन होग्या फोन कोनी करियो, अब कैया याद आई म्हारी?",
+    "dialogue_english": "Oh son! It's been ages since you called, how did you remember me today?",
+    "family_prompt": "What's the funniest 'mehno' your dadi or nani has ever thrown at you?",
+    "date": "2026-11-04"
+  },
+  {
     "word_devanagari": "अजाणो",
     "word_transliteration": "Ajaano",
     "theme": "Daily Expressive Words (Bhaav-Boli)",
