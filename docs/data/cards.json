@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "ऊँटबा",
+    "word_transliteration": "Oontba",
+    "theme": "Humor, Jibes & Teasing (Mehna-Tona / Thitholi)",
+    "item_type": "Word",
+    "meaning": "An affectionate tease for someone who is tall and moves slowly.",
+    "cultural_vibe": "Rooted in the desert landscape, comparing human stature and gait to the majestic, unhurried camel is a classic Marwari form of lighthearted banter.",
+    "dialogue_marwari": "अरे ऊँटबा, तैलिये चाल चालै है! जल्दी कर, बारात निकल ज्यावसी।",
+    "dialogue_english": "Oh Oontba, you walk like an oiled wheel! Hurry up, or the wedding procession will leave.",
+    "family_prompt": "Who is the official 'Oontba' in your household who takes the longest to get ready?",
+    "date": "2026-11-04"
+  },
+  {
     "word_devanagari": "मेहणो",
     "word_transliteration": "Mehno",
     "theme": "Humor, Jibes & Teasing (Mehna-Tona / Thitholi)",
