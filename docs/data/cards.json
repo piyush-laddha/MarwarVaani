@@ -12,18 +12,6 @@
     "date": "2026-11-04"
   },
   {
-    "word_devanagari": "अजाणो",
-    "word_transliteration": "Ajaano",
-    "theme": "Daily Expressive Words (Bhaav-Boli)",
-    "item_type": "Word",
-    "meaning": "A stranger or an oblivious, unaware person.",
-    "cultural_vibe": "Rooted in Marwari rustic honesty, used fondly or teasingly for someone playing innocent or truly clueless about family gossip.",
-    "dialogue_marwari": "अरे छोरा, कांई अजाणा बण रियो है? घर री बातां कोनी बेरो का?",
-    "dialogue_english": "Hey boy, why are you acting like a stranger? Don't you know what's happening at home?",
-    "family_prompt": "Who in our family acts like an 'ajaano' when it's time to do household chores? Tag them below!",
-    "date": "2026-11-03"
-  },
-  {
     "word_devanagari": "ओळभो",
     "word_transliteration": "Olbho",
     "theme": "Daily Expressive Words (Bhaav-Boli)",
@@ -34,18 +22,6 @@
     "dialogue_english": "Hey dear! It's been two months, didn't you even remember us? Now we must lodge a sweet complaint (olbho) against you!",
     "family_prompt": "Who in the family do you owe an 'olbho' to for not calling this week? Tag them below!",
     "date": "2026-11-03"
-  },
-  {
-    "word_devanagari": "लापसी",
-    "word_transliteration": "Laapsi",
-    "theme": "Kitchen, Food & Street Snacks (Ransoi, Chatkara & Mitthan)",
-    "item_type": "Word",
-    "meaning": "Traditional sweet broken-wheat dessert cooked with ghee, jaggery, and dry fruits.",
-    "cultural_vibe": "The ultimate symbol of auspicious beginnings and celebrations in Marwari homes, served during festivals and family milestones.",
-    "dialogue_marwari": "बेटा, आज शुभ काम है, रसोई में गरमा-गरम लापसी और सीरा बना लीज्यो!",
-    "dialogue_english": "Son, today is an auspicious occasion, do prepare hot laapsi and sheera in the kitchen!",
-    "family_prompt": "Who in our family makes the best, most ghee-dripping Laapsi? Share your memories!",
-    "date": "2026-11-02"
   },
   {
     "word_devanagari": "सोगरो",
@@ -60,75 +36,15 @@
     "date": "2026-11-02"
   },
   {
-    "word_devanagari": "मांदळियो",
-    "word_transliteration": "Mandaliyo",
-    "theme": "Vintage Artifacts & Sunday Wisdom (Ghar Ri Cheezan & Gyan)",
+    "word_devanagari": "बधावो",
+    "word_transliteration": "Badhaavo",
+    "theme": "Customs, Rituals & Traditions (Reet-Rivaz & Shagun)",
     "item_type": "Word",
-    "meaning": "Traditional cylindrical amulet worn as a pendant by Rajasthani women.",
-    "cultural_vibe": "A treasured heirloom passed down generations, symbolizing heritage protection, auspiciousness, and classic Marwari craftsmanship.",
-    "dialogue_marwari": "दादी: बेटा, ई संदूक खोलर म्हारो पुराणो चाँदी रो मांदळियो काढ तो सही, आज रविवार है तो साफ-सफाई कर लूँ।",
-    "dialogue_english": "Grandmother: Son, open this chest and take out my old silver Mandaliyo, since it's Sunday I want to clean it up.",
-    "family_prompt": "Does anyone in our family still have or wear an old silver Mandaliyo or heirloom piece from our ancestral home?",
+    "meaning": "Festive songs and celebratory rituals sung during auspicious family occasions.",
+    "cultural_vibe": "In Marwar, every joyful milestone—from weddings to the birth of a child—begins with women gathering to sing folk songs called 'badhaavo', filling the haveli with blessings.",
+    "dialogue_marwari": "घरे बधावो बाज रिया है, बेटा! जल्दी तैयार हो जाओ, मेहमान आर्या है।",
+    "dialogue_english": "The celebratory songs are playing at home, son! Get ready quickly, the guests have arrived.",
+    "family_prompt": "Dada-Dadi, which traditional 'badhaavo' song is your absolute favorite to sing during family weddings?",
     "date": "2026-11-01"
-  },
-  {
-    "date": "2026-10-31",
-    "word_devanagari": "झूठो मेह",
-    "word_transliteration": "Jhootho Meh",
-    "theme": "Desert Life & Nature (Maru-Dhara / Prakriti)",
-    "item_type": "Phrase",
-    "meaning": "A false cloud or mirage of rain that disappears without showering.",
-    "cultural_vibe": "Captures the hopeful yet testing relationship Marwaris have with fickle desert monsoon clouds.",
-    "dialogue_marwari": "आज तो आकाश में घणी बदळियां छाई है, पण इण मूळ धूप में तौ लागे 'झूठो मेह' ही निकळसी।",
-    "dialogue_english": "Today the sky is full of clouds, but in this scorching heat, it feels like it's just a false rain cloud.",
-    "family_prompt": "Have you ever experienced a desert mirage or a false rain cloud during your visits to Rajasthan?"
-  },
-  {
-    "date": "2026-10-31",
-    "word_devanagari": "झिझवा",
-    "word_transliteration": "Jhijhvaa",
-    "theme": "Personalities & Quirky Habits (Aadmeyan Ri Fitrat)",
-    "item_type": "Word",
-    "meaning": "A cool, refreshing breeze that blows during the desert evening.",
-    "cultural_vibe": "Captures the sudden relief and joy brought by the gentle evening wind after a scorching Thar summer day.",
-    "dialogue_marwari": "अरे छोरा, बारै ओसरे जाइजे, कत्तौ सारौ झिझवा चल रयौ है!",
-    "dialogue_english": "Hey child, go out to the verandah, such a lovely evening breeze is blowing!",
-    "family_prompt": "Do you remember the cool desert breeze during your summer visits to Rajasthan?"
-  },
-  {
-    "date": "2026-10-31",
-    "word_devanagari": "लू री लपेट",
-    "word_transliteration": "Loo ri lapet",
-    "theme": "Desert Life & Nature (Maru-Dhara / Prakriti)",
-    "item_type": "Phrase",
-    "meaning": "The scorching heat wave unique to the Thar Desert.",
-    "cultural_vibe": "Captures the intense summer winds of Marwar that teach resilience and the art of staying indoors during peak afternoons.",
-    "dialogue_marwari": "अरे छोरा, बळती दुपहरी बा'र मत जाइज्यो, कठेई 'लू री लपेट' में कोनी आ जाव।",
-    "dialogue_english": "Hey child, don't go outside in the blazing afternoon, lest you get caught in the hot desert wind.",
-    "family_prompt": "What is the highest temperature you have ever experienced, and how do you beat the heat like a true Marwari?"
-  },
-  {
-    "date": "2026-10-31",
-    "word_devanagari": "धोरां रा धणी",
-    "word_transliteration": "Dhoran ra Dhani",
-    "theme": "Desert Life & Nature (Maru-Dhara / Prakriti)",
-    "item_type": "Phrase",
-    "meaning": "Masters of the sand dunes, referring to the majestic camel.",
-    "cultural_vibe": "An affectionate and respectful ode to the camel, the indispensable lifeline of the Thar Desert.",
-    "dialogue_marwari": "दादूजी: देख बेटा, धोरां रा धणी बिना मरुधरे री जीवनशैली अधूरी है।",
-    "dialogue_english": "Grandfather: Look son, without the masters of the dunes, life in our desert land is incomplete.",
-    "family_prompt": "Have you ever seen a camel in person during your visits to Rajasthan? Share your best memory!"
-  },
-  {
-    "date": "2026-10-31",
-    "word_devanagari": "ओळभो",
-    "word_transliteration": "Olbho",
-    "theme": "Daily Expressive Words (Bhaav-Boli)",
-    "item_type": "Word",
-    "meaning": "A gentle, affectionate complaint or reminder of emotional grievance.",
-    "cultural_vibe": "Olbho is uniquely Marwari—not quite a complaint, but a soft emotional nudge used by elders when you haven't called or visited in a while, wrapped in deep love.",
-    "dialogue_marwari": "दादी: 'बेटे, घणादिना सूं फोन कोनी आयो, बसम् थारो ओळभो ही रेई ग्यो।'",
-    "dialogue_english": "Grandmother: 'Son, you haven't called in days, now all I am left with is your gentle complaint.'",
-    "family_prompt": "Who in the family gives you the sweetest 'olbho' when you forget to call? Tag them below!"
   }
 ]
