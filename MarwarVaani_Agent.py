@@ -1,5 +1,6 @@
 import os
 import sys
+import re
 import json
 import urllib.parse
 import datetime
@@ -201,18 +202,25 @@ def append_to_google_doc(doc_id, message_text):
         export_url = f"https://www.googleapis.com/drive/v3/files/{doc_id}/export?mimeType=text/plain"
         res = requests.get(export_url, headers=headers, timeout=20)
         if res.status_code == 200:
-            raw_text = res.content.decode("utf-8-sig", errors="replace").strip()
+            raw_text = res.content.decode("utf-8-sig", errors="replace")
+            # Normalize CRLF/CR to LF and collapse runs of 3+ newlines to max 2 (\n\n)
+            raw_text = raw_text.replace("\r\n", "\n").replace("\r", "\n")
+            raw_text = re.sub(r"\n{3,}", "\n\n", raw_text).strip()
             if raw_text and not raw_text.startswith("Test Message from MarwarVaani Agent"):
                 existing_text = raw_text
 
         today_str = datetime.date.today().strftime("%Y-%m-%d (%A)")
         divider = "=" * 54
-        entry_block = f"📅 Date: {today_str}\n{divider}\n{message_text}\n{divider}"
+        clean_message = re.sub(r"\n{3,}", "\n\n", message_text.replace("\r\n", "\n")).strip()
+        entry_block = f"📅 Date: {today_str}\n{divider}\n{clean_message}\n{divider}"
         
         if existing_text:
             combined_content = f"{existing_text}\n\n\n{entry_block}\n"
         else:
-            combined_content = f"🐪 MARWARVAANI - DAILY MESSAGE JOURNAL\n{divider}\n\n{entry_block}\n"
+            combined_content = f"🐪 MARWARVAANI | DAILY MARWARI JOURNAL\n{divider}\n\n{entry_block}\n"
+            
+        # Ensure the whole combined payload has no redundant empty lines
+        combined_content = re.sub(r"\n{3,}", "\n\n", combined_content).strip() + "\n"
             
         upload_url = f"https://www.googleapis.com/upload/drive/v3/files/{doc_id}?uploadType=media"
         upload_headers = {
