@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "बधावो",
+    "word_transliteration": "Badhaavo",
+    "theme": "Customs, Rituals & Superstitions (Reet-Rivaz & Shagun)",
+    "item_type": "Word",
+    "meaning": "Joyful welcoming song and ritual performed during family milestones.",
+    "cultural_vibe": "In Marwar, badhaavo is the sound of pure joy. Whenever a wedding, birth, or homecoming happens, the women gather with a dholak to sing auspicious songs, turning every milestone into a collective community blessing.",
+    "dialogue_marwari": "अरे बागो! घर में बेटा जन्मिओ है, जल्दी सूं ढोलक मंगाओ अर बधावो गावण री तैयारी करो!",
+    "dialogue_english": "Oh listen! A son is born in the house, quickly bring the dholak and get ready to sing the celebratory badhaavo songs!",
+    "family_prompt": "Dadis and Nanis, which traditional badhaavo song is your absolute favorite to sing during weddings?",
+    "date": "2026-11-05"
+  },
+  {
     "word_devanagari": "ऊँटबा",
     "word_transliteration": "Oontba",
     "theme": "Humor, Jibes & Teasing (Mehna-Tona / Thitholi)",
