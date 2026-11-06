@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "अळपम्पो",
+    "word_transliteration": "Alpampo",
+    "theme": "Personalities & Quirky Habits (Aadmeyan Ri Fitrat)",
+    "item_type": "Word",
+    "meaning": "A restless soul who cannot sit still for a single moment.",
+    "cultural_vibe": "In Marwari households, boundless energy is often affectionately (and playfully) blamed on having quicksilver in one's heels.",
+    "dialogue_marwari": "अरे बैठ जाइजे थारी जगह! कंठोई चैन कोनी, बातां ई बातां में दस फेरा काट आया। कूट-कूट'र अळपम्पो भरियो है थारै मा रै!",
+    "dialogue_english": "Will you sit down in one place! You have no peace; walking around ten times while talking. You are packed to the brim with restlessness!",
+    "family_prompt": "Who is the biggest 'Alpampo' in our family who simply cannot sit in one place during Sunday family calls?",
+    "date": "2026-11-07"
+  },
+  {
     "word_devanagari": "ऊँट किस करवट बैठता है",
     "word_transliteration": "Oont Kis Karwat Baithta Hai",
     "theme": "Classic Idioms & Witty Sayings (Kahawat & Muhavra)",
