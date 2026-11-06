@@ -27,6 +27,17 @@ CALLMEBOT_APIKEY = os.getenv("CALLMEBOT_APIKEY")
 SHEET_NAME = os.getenv("GOOGLE_SHEET_NAME") or "MarwarVaani_Agent_Log"
 GOOGLE_DOC_ID = os.getenv("GOOGLE_DOC_ID") or "18P94XOufaM5sv6Wip5zAkFNAMu-VuPQ1xQydIGs1ym8"
 
+# Indian Standard Time (IST, UTC+5:30) - MarwarVaani is an IST-centric service
+IST = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
+
+def get_now_ist():
+    """Returns the current datetime in Indian Standard Time (IST, UTC+5:30)."""
+    return datetime.datetime.now(IST)
+
+def get_today_ist():
+    """Returns today's date in Indian Standard Time (IST, UTC+5:30)."""
+    return get_now_ist().date()
+
 # --- WEEKLY THEMATIC SCHEDULE (theme_key for Curated_Words, theme_label for display) ---
 THEME_SCHEDULE = {
     0: ("Kitchen & Food", "Kitchen, Food & Street Snacks (Ransoi, Chatkara & Mitthan)"),
@@ -56,42 +67,83 @@ def get_sheets_client():
     return gspread.authorize(creds)
 
 # --- 2. FETCH FROM CURATED SEED LIST ---
-def fetch_curated_or_fallback(client, theme_key):
+def fetch_curated_or_fallback(client, theme_key, excluded_words=None):
     """
     Checks the 'Curated_Words' tab for an unused word matching today's theme.
-    Returns (worksheet, row_index, word, transliteration) or (None, None, None, None)
-    if no unused curated word is available.
+    Cross-references excluded_words (past history).
+    If a curated word was already used in history, automatically marks it USED in Curated_Words
+    and advances to the next available word.
+    Returns (worksheet, row_index, word, transliteration) or (None, None, None, None).
     """
     try:
         spreadsheet = client.open(SHEET_NAME)
         worksheet = spreadsheet.worksheet("Curated_Words")
         rows = worksheet.get_all_values()
         
+        excluded_clean = set(w.strip().lower() for w in (excluded_words or []) if w)
+        
         # Row 1 is header: ['Theme', 'Word', 'Transliteration', 'Status']
         for idx, row in enumerate(rows[1:], start=2):
             if len(row) >= 2 and row[0].strip().lower() == theme_key.lower():
                 status = row[3].strip().upper() if len(row) >= 4 else ""
-                if status != "USED":
-                    word = row[1].strip()
-                    translit = row[2].strip() if len(row) >= 3 else ""
-                    return (worksheet, idx, word, translit)
+                word = row[1].strip()
+                translit = row[2].strip() if len(row) >= 3 else ""
+                
+                # Check if already marked USED in sheet
+                if status == "USED":
+                    continue
+                
+                # Check if already in historical log
+                if word.lower() in excluded_clean:
+                    print(f"[*] Curated term '{word}' (Row {idx}) was already used previously in history. Marking USED and skipping...")
+                    try:
+                        worksheet.update_cell(idx, 4, "USED")
+                    except Exception as e:
+                        print(f"[!] Warning updating row {idx} to USED: {e}")
+                    continue
+                
+                # Found a truly unused curated word!
+                return (worksheet, idx, word, translit)
+                
         return (None, None, None, None)
     except Exception as e:
         print(f"[!] Notice: Curated tab check skipped: {e}")
         return (None, None, None, None)
 
 # --- 3. FETCH RECENT LOG HISTORY FOR DEDUPLICATION ---
-def get_recent_history(client, max_history=60):
-    """Fetches previously used words from Sheet1 (Column B) to prevent repeats."""
+def get_recent_history(client, max_history=90):
+    """
+    Fetches previously used words from both Sheet1 (Column B) and cards.json to prevent repeats.
+    """
+    words = []
+    sheet1 = None
     try:
         spreadsheet = client.open(SHEET_NAME)
         sheet1 = spreadsheet.sheet1
         records = sheet1.get_all_values()
-        words = [row[1].strip() for row in records[1:] if len(row) > 1 and row[1].strip()]
-        return sheet1, words[-max_history:]
+        for row in records[1:]:
+            if len(row) > 1 and row[1].strip():
+                w = row[1].strip()
+                if w not in words:
+                    words.append(w)
     except Exception as e:
         print(f"[!] Warning reading log sheet: {e}")
-        return None, []
+
+    # Also augment with words from docs/data/cards.json for comprehensive history
+    try:
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        cards_file = os.path.join(base_dir, "docs", "data", "cards.json")
+        if os.path.exists(cards_file):
+            with open(cards_file, "r", encoding="utf-8") as f:
+                cards = json.load(f)
+                for c in cards:
+                    w = c.get("word_devanagari", "").strip()
+                    if w and w not in words:
+                        words.append(w)
+    except Exception:
+        pass
+
+    return sheet1, words[-max_history:]
 
 # --- 4. GENERATE CARD VIA GEMINI (CURATED OR AUTONOMOUS) ---
 def generate_marwarvaani_card(theme_label, specific_word=None, specific_translit=None, excluded_words=None):
@@ -141,19 +193,35 @@ def generate_marwarvaani_card(theme_label, specific_word=None, specific_translit
 
     models_to_try = ["gemini-3.5-flash-lite", "gemini-3.8-flash"]
     last_err = None
-    for model_name in models_to_try:
-        try:
-            response = client.models.generate_content(
-                model=model_name,
-                contents=prompt,
-                config=types.GenerateContentConfig(
-                    response_mime_type="application/json"
+    excluded_set = set(w.strip().lower() for w in (excluded_words or []) if w)
+
+    for attempt in range(3):
+        for model_name in models_to_try:
+            try:
+                response = client.models.generate_content(
+                    model=model_name,
+                    contents=prompt,
+                    config=types.GenerateContentConfig(
+                        response_mime_type="application/json"
+                    )
                 )
-            )
-            return json.loads(response.text)
-        except Exception as e:
-            last_err = e
-            continue
+                data = json.loads(response.text)
+                gen_word = data.get("word_devanagari", "").strip()
+
+                # If specific curated word was given, accept it
+                if specific_word:
+                    return data
+
+                # If autonomous, verify not in excluded_words
+                if gen_word.lower() in excluded_set:
+                    print(f"[!] Gemini generated duplicate word '{gen_word}'. Retrying attempt {attempt + 1}/3...")
+                    prompt += f"\nCRITICAL: You returned '{gen_word}', which is already in the exclusion list! Pick a completely different term."
+                    break
+
+                return data
+            except Exception as e:
+                last_err = e
+                continue
     raise last_err
 
 # --- 5. FORMAT FOR WHATSAPP ---
@@ -209,7 +277,7 @@ def append_to_google_doc(doc_id, message_text):
             if raw_text and not raw_text.startswith("Test Message from MarwarVaani Agent"):
                 existing_text = raw_text
 
-        today_str = datetime.date.today().strftime("%Y-%m-%d (%A)")
+        today_str = get_today_ist().strftime("%Y-%m-%d (%A)")
         divider = "=" * 54
         clean_message = re.sub(r"\n{3,}", "\n\n", message_text.replace("\r\n", "\n")).strip()
         entry_block = f"📅 Date: {today_str}\n{divider}\n{clean_message}\n{divider}"
@@ -263,7 +331,7 @@ def save_to_web_archive(card_data):
             except Exception:
                 cards = []
 
-        today_str = datetime.date.today().strftime("%Y-%m-%d")
+        today_str = get_today_ist().strftime("%Y-%m-%d")
         card_copy = dict(card_data)
         card_copy["date"] = today_str
 
@@ -310,7 +378,7 @@ def send_whatsapp_alert(phone, message_text, apikey):
 def log_entry(sheet, word, theme):
     """Appends Date (Col A), Word (Col B), and Theme (Col C) to Google Sheet."""
     if sheet:
-        today_str = datetime.date.today().strftime("%Y-%m-%d")
+        today_str = get_today_ist().strftime("%Y-%m-%d")
         sheet.append_row([today_str, word, theme])
         print(f"[+] Saved '{word}' | Theme: '{theme}' across columns A, B, C in {SHEET_NAME} (Sheet1).")
 
@@ -326,8 +394,9 @@ def main():
     
     dry_run = ("--dry-run" in sys.argv) or not has_callmebot
 
-    # Determine theme based on current weekday
-    weekday = datetime.date.today().weekday()
+    # Determine theme based on current weekday in Indian Standard Time (IST)
+    today_ist = get_today_ist()
+    weekday = today_ist.weekday()
     theme_key, theme_label = THEME_SCHEDULE.get(
         weekday, 
         ("Expressive Words", "Daily Expressive Words (Bhaav-Boli)")
@@ -350,7 +419,7 @@ def main():
         print("          [MODE: DRY RUN]           ")
     print("====================================\n")
     
-    print(f"[*] Today's Day: {datetime.date.today().strftime('%A')} (Weekday {weekday})")
+    print(f"[*] Today's Date (IST): {today_ist.strftime('%Y-%m-%d')} | Day: {today_ist.strftime('%A')} (Weekday {weekday})")
     print(f"[*] Today's Theme: {theme_label} [Seed Key: {theme_key}]\n")
 
     if dry_run and not has_callmebot:
@@ -358,13 +427,16 @@ def main():
     elif dry_run:
         print("[*] Notice: Dry Run flag detected. WhatsApp dispatch skipped.\n")
 
-    # 1. Connect to Google Sheets & check Curated list vs History
+    # 1. Connect to Google Sheets & check History FIRST, then Curated list
     print("[1/6] Checking Google Sheets...")
     client = get_sheets_client()
     
-    curated_ws, row_idx, picked_word, picked_translit = fetch_curated_or_fallback(client, theme_key)
     log_sheet, recent_history = get_recent_history(client)
-    print(f"[*] History log (Sheet1) contains {len(recent_history)} previously used entries.")
+    print(f"[*] History log contains {len(recent_history)} previously used entries.")
+
+    curated_ws, row_idx, picked_word, picked_translit = fetch_curated_or_fallback(
+        client, theme_key, excluded_words=recent_history
+    )
 
     # 2. Generate Card (Curated first, Autonomous fallback)
     if picked_word:
@@ -385,7 +457,9 @@ def main():
 
     # 4. Append to Google Doc Journal
     print("[3/6] Appending to Google Doc 'MarwarVaani_Msg'...")
-    if GOOGLE_DOC_ID:
+    if dry_run and "--save-log" not in sys.argv:
+        print("[*] DRY RUN: Google Doc append skipped (pass --save-log to update).")
+    elif GOOGLE_DOC_ID:
         append_to_google_doc(GOOGLE_DOC_ID, formatted_msg)
     else:
         print("[!] GOOGLE_DOC_ID not configured in .env.")

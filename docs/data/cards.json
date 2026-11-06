@@ -1,27 +1,27 @@
 [
   {
-    "word_devanagari": "बधावो",
-    "word_transliteration": "Badhaavo",
-    "theme": "Customs, Rituals & Superstitions (Reet-Rivaz & Shagun)",
-    "item_type": "Word",
-    "meaning": "Joyful welcoming song and ritual performed during family milestones.",
-    "cultural_vibe": "In Marwar, badhaavo is the sound of pure joy. Whenever a wedding, birth, or homecoming happens, the women gather with a dholak to sing auspicious songs, turning every milestone into a collective community blessing.",
-    "dialogue_marwari": "अरे बागो! घर में बेटा जन्मिओ है, जल्दी सूं ढोलक मंगाओ अर बधावो गावण री तैयारी करो!",
-    "dialogue_english": "Oh listen! A son is born in the house, quickly bring the dholak and get ready to sing the celebratory badhaavo songs!",
-    "family_prompt": "Dadis and Nanis, which traditional badhaavo song is your absolute favorite to sing during weddings?",
-    "date": "2026-11-05"
+    "word_devanagari": "ऊँट किस करवट बैठता है",
+    "word_transliteration": "Oont Kis Karwat Baithta Hai",
+    "theme": "Classic Idioms & Witty Sayings (Kahawat & Muhavra)",
+    "item_type": "Idiom",
+    "meaning": "Wait and see which way the result lands.",
+    "cultural_vibe": "Born from the desert landscape where camels sit resting on one side or the other, symbolizing unpredictable outcomes.",
+    "dialogue_marwari": "चुनाव रा परिणाम आय रिया है, रुको ज़रा, देखस्यां ऊँट किस करवट बैठता है!",
+    "dialogue_english": "Election results are coming, wait a minute, let's see which way the camel sits!",
+    "family_prompt": "What's a major decision or result you are currently waiting on in suspense?",
+    "date": "2026-11-06"
   },
   {
-    "word_devanagari": "ऊँटबा",
-    "word_transliteration": "Oontba",
-    "theme": "Humor, Jibes & Teasing (Mehna-Tona / Thitholi)",
+    "word_devanagari": "साजन-गोठ",
+    "word_transliteration": "Saajan-Goth",
+    "theme": "Customs, Rituals & Superstitions (Reet-Rivaz & Shagun)",
     "item_type": "Word",
-    "meaning": "An affectionate tease for someone who is tall and moves slowly.",
-    "cultural_vibe": "Rooted in the desert landscape, comparing human stature and gait to the majestic, unhurried camel is a classic Marwari form of lighthearted banter.",
-    "dialogue_marwari": "अरे ऊँटबा, तैलिये चाल चालै है! जल्दी कर, बारात निकल ज्यावसी।",
-    "dialogue_english": "Oh Oontba, you walk like an oiled wheel! Hurry up, or the wedding procession will leave.",
-    "family_prompt": "Who is the official 'Oontba' in your household who takes the longest to get ready?",
-    "date": "2026-11-04"
+    "meaning": "A grand traditional feast hosted by the groom's family for the bride's relatives.",
+    "cultural_vibe": "Rooted in Marwari hospitality (Mehmaan-nawazi), this pre-wedding feast strengthens ties between two families through royal-style community dining and joyous celebration.",
+    "dialogue_marwari": "अरे बन्ना सा, ब्याव में साजन-गोठ कौंणसूं दिन राखड़ी है? सगळा मेहमान पैलांई पूछ रिया है!",
+    "dialogue_english": "Hey groom-to-be, on which day have you kept the Saajan-Goth feast for the wedding? All the guests are asking in advance!",
+    "family_prompt": "What is your absolute favorite traditional delicacy you always look forward to eating at a grand Marwari Saajan-Goth?",
+    "date": "2026-11-05"
   },
   {
     "word_devanagari": "मेहणो",
