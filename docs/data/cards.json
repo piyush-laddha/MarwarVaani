@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "लापसी",
+    "word_transliteration": "Laapsi",
+    "theme": "Kitchen, Food & Street Snacks (Ransoi, Chatkara & Mitthan)",
+    "item_type": "Word",
+    "meaning": "Traditional sweet broken-wheat dessert cooked in ghee and jaggery, made on auspicious occasions.",
+    "cultural_vibe": "No Marwari celebration—be it a wedding, festival, or child's birth—is complete without the sweet aroma of freshly churned Laapsi served with oodles of desi ghee.",
+    "dialogue_marwari": "अरे बासा, आज घर में कूंणसो खास हुयो है? रसोड़े सूं तो लापसी की गऊ महक आवे!",
+    "dialogue_english": "Oh elders, what special occasion is at home today? The wonderful aroma of Laapsi is wafting from the kitchen!",
+    "family_prompt": "Who in your family makes the best traditional Laapsi with extra ghee? Drop a heart for your favorite chef!",
+    "date": "2026-11-09"
+  },
+  {
     "word_devanagari": "मांदळियो",
     "word_transliteration": "Mandaliyo",
     "theme": "Vintage Artifacts & Sunday Wisdom (Ghar Ri Cheezan & Gyan)",
