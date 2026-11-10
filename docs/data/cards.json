@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "अजाणो",
+    "word_transliteration": "Ajaano",
+    "theme": "Daily Expressive Words (Bhaav-Boli)",
+    "item_type": "Word",
+    "meaning": "A stranger, or someone who is completely unaware or oblivious.",
+    "cultural_vibe": "In Marwari households, being 'ajaano' often carries a touch of affectionate teasing, used for someone pretending ignorance or a newcomer finding their roots.",
+    "dialogue_marwari": "ए दाई! नयो मेहमान आया पछि यूँ अजाणो क्यूं बण रीयो है? बैठो, म्हासे बात करो!",
+    "dialogue_english": "Hey elder brother! Why are you acting like a stranger after the new guest arrived? Sit down and talk to us!",
+    "family_prompt": "Who in the family always acts 'ajaano' when it's their turn to do the household chores?",
+    "date": "2026-11-10"
+  },
+  {
     "word_devanagari": "लापसी",
     "word_transliteration": "Laapsi",
     "theme": "Kitchen, Food & Street Snacks (Ransoi, Chatkara & Mitthan)",
