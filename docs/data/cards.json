@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "दीवा तळे अंधेरो",
+    "word_transliteration": "Deeva Tale Andhero",
+    "theme": "Classic Idioms & Witty Sayings (Kahawat & Muhavra)",
+    "item_type": "Idiom",
+    "meaning": "Darkness right under the lamp; failing to see faults in oneself or close ones.",
+    "cultural_vibe": "A classic Marwari observation about human nature, noting how those who spread wisdom or light often overlook glaring shortcomings in their own immediate household.",
+    "dialogue_marwari": "दादीजी बोलीं—'दूजां ने ज्ञान बांटण वाळा खुद रा घर में कई होय रीयो है? इने ही केवे दीवा तळे अंधेरो!'",
+    "dialogue_english": "Grandmother said—'What is happening in the very own house of the one who lectures others? That's what they call darkness right under the lamp!'",
+    "family_prompt": "Have you ever experienced a funny 'deeva tale andhero' moment in real life? Share with the family!",
+    "date": "2026-11-13"
+  },
+  {
     "word_devanagari": "ओगण",
     "word_transliteration": "Ogan",
     "theme": "Customs, Rituals & Superstitions (Reet-Rivaz & Shagun)",
