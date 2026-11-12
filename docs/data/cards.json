@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "ओगण",
+    "word_transliteration": "Ogan",
+    "theme": "Customs, Rituals & Superstitions (Reet-Rivaz & Shagun)",
+    "item_type": "Word",
+    "meaning": "An inauspicious omen or superstitious hesitation before starting work.",
+    "cultural_vibe": "Rooted in rural Marwar, an 'Ogan' is when a sudden sneeze, cat crossing, or bad omen halts a journey, reminding us of ancient desert precautions.",
+    "dialogue_marwari": "अरे रुको रुको! बहरै जातां ही छींक आगी, ओगण बैठ ग्यो, थोड़ो पाणी पी'र निकलो.",
+    "dialogue_english": "Wait, wait! I sneezed right as we stepped out, it's an inauspicious omen—drink some water before leaving.",
+    "family_prompt": "Have you ever delayed leaving the house because of a sudden 'Ogan' or sneeze? Share your family's funniest superstition stories!",
+    "date": "2026-11-12"
+  },
+  {
     "word_devanagari": "टोंट",
     "word_transliteration": "Tont",
     "theme": "Humor, Jibes & Teasing (Mehna-Tona / Thitholi)",
