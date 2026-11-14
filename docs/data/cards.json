@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "घंटी",
+    "word_transliteration": "Ghanti",
+    "theme": "Vintage Artifacts & Sunday Wisdom (Ghar Ri Cheezan & Gyan)",
+    "item_type": "Word",
+    "meaning": "Traditional hand-turned heavy stone mill used for grinding grains.",
+    "cultural_vibe": "The rhythmic sound of the Ghanti at dawn was the original alarm clock of Marwari homes, carrying songs of resilience and sisterhood.",
+    "dialogue_marwari": "बेगा उठो सा, आज तो चक्की-घंटी सूं ताजौ आटौ पीस'र रोट्य्ळियॉ बनास्यां!",
+    "dialogue_english": "Wake up early, today we will grind fresh flour using the stone mill and make traditional flatbreads!",
+    "family_prompt": "Who among our generation remembers the physical effort of turning the Ghanti at Grandma's house?",
+    "date": "2026-11-15"
+  },
+  {
     "word_devanagari": "भोळवणी",
     "word_transliteration": "Bholwani",
     "theme": "Personalities & Quirky Habits (Aadmeyan Ri Fitrat)",
