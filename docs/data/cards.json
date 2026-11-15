@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "राबड़ी",
+    "word_transliteration": "Raabdi",
+    "theme": "Kitchen, Food & Street Snacks (Ransoi, Chatkara & Mitthan)",
+    "item_type": "Word",
+    "meaning": "A traditional cooling summer drink made from bajra flour and buttermilk.",
+    "cultural_vibe": "The ultimate desert elixir! Prepared by fermenting cooked bajra flour in buttermilk, it keeps the body cool during blistering Marwar summers.",
+    "dialogue_marwari": "धोक्यां की लू में ठंडी-ठंडी राबड़ी पी ली, तो जिन्दगो सुधर जावे!",
+    "dialogue_english": "Drink a glass of cold raabdi in the scorching afternoon heat, and your life is set!",
+    "family_prompt": "Who remembers Dadi making fresh raabdi in the earthen pot during summer? Drop your favorite way to drink it—with onions or chaas!",
+    "date": "2026-11-16"
+  },
+  {
     "word_devanagari": "घंटी",
     "word_transliteration": "Ghanti",
     "theme": "Vintage Artifacts & Sunday Wisdom (Ghar Ri Cheezan & Gyan)",
