@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "ठा",
+    "word_transliteration": "Thaa",
+    "theme": "Daily Expressive Words (Bhaav-Boli)",
+    "item_type": "Word",
+    "meaning": "Awareness, knowledge, or information about something.",
+    "cultural_vibe": "Used often in Marwari households to check if someone is in the loop or aware of family updates and gossip.",
+    "dialogue_marwari": "अरे बापू, थांने ठा है आज कठे मेहमान आवेला?",
+    "dialogue_english": "Hey father, do you have any idea where the guests are coming from today?",
+    "family_prompt": "Drop a voice note sharing the latest family news you have 'thaa' about!",
+    "date": "2026-11-17"
+  },
+  {
     "word_devanagari": "राबड़ी",
     "word_transliteration": "Raabdi",
     "theme": "Kitchen, Food & Street Snacks (Ransoi, Chatkara & Mitthan)",
