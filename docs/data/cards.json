@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "चपड़-चपड़",
+    "word_transliteration": "Chapad-Chapad",
+    "theme": "Humor, Jibes & Teasing (Mehna-Tona / Thitholi)",
+    "item_type": "Word",
+    "meaning": "Non-stop idle chatter or endless blabbering.",
+    "cultural_vibe": "In Marwari households, harmless gossip and non-stop banter are everyday background music, especially during afternoon chai sessions.",
+    "dialogue_marwari": "अरे भाई, कतरा बड़क हो! फेर चपड़-चपड़ शुरू कर दी, थोड़ी देर चैन सो सुण ले।",
+    "dialogue_english": "Oh brother, how you chatter! Started your non-stop blabbering again, at least sit in peace for a while.",
+    "family_prompt": "Who in our family is the champion of doing 'chapad-chapad' non-stop during tea time? Tag them below!",
+    "date": "2026-11-18"
+  },
+  {
     "word_devanagari": "ठा",
     "word_transliteration": "Thaa",
     "theme": "Daily Expressive Words (Bhaav-Boli)",
