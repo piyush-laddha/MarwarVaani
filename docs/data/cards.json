@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "सुगन",
+    "word_transliteration": "Sugan",
+    "theme": "Customs, Rituals & Superstitions (Reet-Rivaz & Shagun)",
+    "item_type": "Word",
+    "meaning": "An auspicious sign or good omen for a new start.",
+    "cultural_vibe": "In Marwar, spotting a 'sugan' like a Neelkanth bird or a cow with its calf before stepping out ensures success in any new endeavor.",
+    "dialogue_marwari": "अरे बेटा, बाहर जाता बगत गाय ने रोटी दीखगी, पक्की बात सुगन बढ़िया है, काम पक्का पार पड़ी!",
+    "dialogue_english": "Oh son, seeing a cow being fed before heading out is a great omen; your work will surely succeed!",
+    "family_prompt": "What is the first 'sugan' your dadi or nani looks for before you leave for an important exam or trip?",
+    "date": "2026-11-19"
+  },
+  {
     "word_devanagari": "चपड़-चपड़",
     "word_transliteration": "Chapad-Chapad",
     "theme": "Humor, Jibes & Teasing (Mehna-Tona / Thitholi)",
