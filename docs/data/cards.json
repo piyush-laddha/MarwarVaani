@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "घर रो जोगी जोगणो, बाहिर रो जोगी सिद्ध",
+    "word_transliteration": "Ghar Ro Jogi Jogno",
+    "theme": "Classic Idioms & Witty Sayings (Kahawat & Muhavra)",
+    "item_type": "Idiom",
+    "meaning": "Familiarity breeds neglect; ignoring the talent or value of one's own family member.",
+    "cultural_vibe": "Reflects the timeless Marwari wisdom that people often travel far seeking spiritual or worldly advice, ignoring the wise elders and talented youth right under their own roof.",
+    "dialogue_marwari": "दादी: 'बेटा, थारे भाई री सलाई डिजाइन देखी कें? कित्तो सुथरो काम करे!' पोतो: 'अरे दादी, घर रो जोगी जोगणो, वाने काई आवे!'",
+    "dialogue_english": "Grandma: 'Child, did you see your brother's tailoring designs? He works so neatly!' Grandson: 'Oh Grandma, a prophet is never recognized in his own home; what does he know!'",
+    "family_prompt": "Drop a message in the group appreciating a hidden talent of a family member living right inside your house!",
+    "date": "2026-11-20"
+  },
+  {
     "word_devanagari": "सुगन",
     "word_transliteration": "Sugan",
     "theme": "Customs, Rituals & Superstitions (Reet-Rivaz & Shagun)",
