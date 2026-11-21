@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "गोफण",
+    "word_transliteration": "Gophan",
+    "theme": "Vintage Artifacts & Sunday Wisdom (Ghar Ri Cheezan & Gyan)",
+    "item_type": "Word",
+    "meaning": "A traditional woven sling used for casting stones across fields.",
+    "cultural_vibe": "An ingenious agrarian tool woven from sheep's wool or cotton, historically used by farmers to protect crops from birds and stray animals in the vast fields of Marwar.",
+    "dialogue_marwari": "दादोसा: खेत में चिड़िया री झुंड ने भगावण वास्ते गोफण संभाल्णो पड़े।",
+    "dialogue_english": "Grandfather: To chase away flocks of birds in the field, one needs to handle the traditional sling.",
+    "family_prompt": "Did your grandparents ever show you how local farming tools like the Gophan were used back in the village?",
+    "date": "2026-11-22"
+  },
+  {
     "word_devanagari": "धींगो",
     "word_transliteration": "Dheengo",
     "theme": "Personalities & Quirky Habits (Aadmeyan Ri Fitrat)",
