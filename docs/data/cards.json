@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "धींगो",
+    "word_transliteration": "Dheengo",
+    "theme": "Personalities & Quirky Habits (Aadmeyan Ri Fitrat)",
+    "item_type": "Word",
+    "meaning": "A headstrong, stubbornly persistent person who refuses to change their mind.",
+    "cultural_vibe": "In the arid expanses of Marwar, resilience is survival, but sometimes that grit hardens into pure stubbornness—affectionately called 'dheengapan'.",
+    "dialogue_marwari": "दादी: 'अरे म्हारो पोतो तो पक्का धींगो है, एक बार जिद पकड़ ली तो बस पकड़ ली!'",
+    "dialogue_english": "Grandmother: 'Oh, my grandson is truly headstrong; once he makes up his mind, that's it!'",
+    "family_prompt": "Who is the most 'dheengo' member in our family who always gets their way? Tag them below!",
+    "date": "2026-11-21"
+  },
+  {
     "word_devanagari": "घर रो जोगी जोगणो, बाहिर रो जोगी सिद्ध",
     "word_transliteration": "Ghar Ro Jogi Jogno",
     "theme": "Classic Idioms & Witty Sayings (Kahawat & Muhavra)",
