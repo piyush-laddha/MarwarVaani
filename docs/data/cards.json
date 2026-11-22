@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "मंगोड़ी",
+    "word_transliteration": "Mangodi",
+    "theme": "Kitchen, Food & Street Snacks (Ransoi, Chatkara & Mitthan)",
+    "item_type": "Word",
+    "meaning": "Sun-dried spiced moong lentil nuggets used in Marwari curries.",
+    "cultural_vibe": "Made during winters by grandmothers on rooftops, mangodis add earthy magic to everyday dal.",
+    "dialogue_marwari": "अरे बागो, आज रसोई में मंगोड़ी-आलू री सब्जी बनाऊं के?",
+    "dialogue_english": "Hey child, shall I make the mangodi-potato curry in the kitchen today?",
+    "family_prompt": "Who remembers helping Dadi sun-dry batches of mangodi on the rooftop? Drop your favorite memory!",
+    "date": "2026-11-23"
+  },
+  {
     "word_devanagari": "गोफण",
     "word_transliteration": "Gophan",
     "theme": "Vintage Artifacts & Sunday Wisdom (Ghar Ri Cheezan & Gyan)",
