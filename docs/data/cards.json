@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "काईकर",
+    "word_transliteration": "Kaikar",
+    "theme": "Daily Expressive Words (Bhaav-Boli)",
+    "item_type": "Word",
+    "meaning": "Conversational greeting meaning 'How are things? / What's up?'",
+    "cultural_vibe": "A quintessential Marwari conversation-starter wrapped in warmth, instantly bridging distances between loved ones.",
+    "dialogue_marwari": "अरे बासा, काईकर? सब राजी-खुशी है ना?",
+    "dialogue_english": "Hey elder brother/friend, what's up? Everyone doing well and happy?",
+    "family_prompt": "Drop a 'Kaikar?' to your sibling or cousin today and share their reaction!",
+    "date": "2026-11-24"
+  },
+  {
     "word_devanagari": "मंगोड़ी",
     "word_transliteration": "Mangodi",
     "theme": "Kitchen, Food & Street Snacks (Ransoi, Chatkara & Mitthan)",
