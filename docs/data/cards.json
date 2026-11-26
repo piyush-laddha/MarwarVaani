@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "छांटो",
+    "word_transliteration": "Chhaanto",
+    "theme": "Customs, Rituals & Superstitions (Reet-Rivaz & Shagun)",
+    "item_type": "Word",
+    "meaning": "Sacred ritual sprinkling of Gangajal, milk, or turmeric water for purification.",
+    "cultural_vibe": "In Marwar, 'Chhaanto' is vital before entering a new home or starting auspicious events to ward off negative energies and invite divine blessings.",
+    "dialogue_marwari": "दादी: 'नया घर में प्रवेश करताी ही पैली गंगाजल रो छांटो दीजो, फिर आरती करस्यां।'",
+    "dialogue_english": "Grandmother: 'Right after entering the new home, give a sacred sprinkle of Gangajal, then we will perform the Aarti.'",
+    "family_prompt": "What is the most memorable ritual or 'chhaanto' you remember your grandparents doing during family milestones?",
+    "date": "2026-11-26"
+  },
+  {
     "word_devanagari": "डफणो",
     "word_transliteration": "Dafno",
     "theme": "Humor, Jibes & Teasing (Mehna-Tona / Thitholi)",
