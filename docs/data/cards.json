@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "अणमणा रो पाहुणो",
+    "word_transliteration": "Anmana Ro Paahuno",
+    "theme": "Classic Idioms & Witty Sayings (Kahawat & Muhavra)",
+    "item_type": "Idiom",
+    "meaning": "An uninvited and inconvenient guest who overstays their welcome.",
+    "cultural_vibe": "Reflects the delicate Marwari boundary between legendary 'Atithi Devo Bhava' hospitality and humorous exasperation when someone drops in unannounced during busy times.",
+    "dialogue_marwari": "अणमणा रो पाहुणो कदैई आवै, घर रा काम बिगाड़'र जावै!",
+    "dialogue_english": "An uninvited guest always shows up at the wrong time and messes up household chores!",
+    "family_prompt": "Have you ever had an 'Anmana Ro Paahuno' drop by unexpectedly? Share your funny guest stories below!",
+    "date": "2026-11-27"
+  },
+  {
     "word_devanagari": "छांटो",
     "word_transliteration": "Chhaanto",
     "theme": "Customs, Rituals & Superstitions (Reet-Rivaz & Shagun)",
