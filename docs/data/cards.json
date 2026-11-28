@@ -1,5 +1,17 @@
 [
   {
+    "word_devanagari": "सगा-पोहणा",
+    "word_transliteration": "Saga-Pohna",
+    "theme": "Personalities & Quirky Habits (Aadmeyan Ri Fitrat)",
+    "item_type": "Word",
+    "meaning": "High-maintenance guests whose sudden arrival stirs up the whole household.",
+    "cultural_vibe": "In Marwari tradition, hospitality (Atithi Devo Bhava) is sacred, but 'saga-pohna' affectionately denotes those special guests who demand royal treatment and keep everyone on their toes!",
+    "dialogue_marwari": "अरे भाई, घर पाछै सगा-पोहणा आया है, फटाफट चाय-नाश्तो तैयार करो और घर ने चोखो करो!",
+    "dialogue_english": "Oh brother, high-maintenance guests have arrived, quickly get the tea and snacks ready and tidy up the house!",
+    "family_prompt": "Who is that one 'saga-pohna' in our extended family whose visit always turns the house upside down with excitement and chaos?",
+    "date": "2026-11-28"
+  },
+  {
     "word_devanagari": "अणमणा रो पाहुणो",
     "word_transliteration": "Anmana Ro Paahuno",
     "theme": "Classic Idioms & Witty Sayings (Kahawat & Muhavra)",
